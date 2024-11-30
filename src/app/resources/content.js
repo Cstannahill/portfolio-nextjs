@@ -13,7 +13,7 @@ const person = {
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -34,17 +34,17 @@ const social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/christian-tannahill",
+    link: "https://www.linkedin.com/in/christian-tannahill",
   },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
-  },
+  // {
+  //   name: "X",
+  //   icon: "x",
+  //   link: "",
+  // },
   {
     name: "Email",
     icon: "email",
-    link: "christiantannahill2@gmail.com",
+    link: "mailto:christiantannahill2@gmail.com",
   },
 ];
 
@@ -52,12 +52,12 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Full Stack Software Engineer</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I
-      craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Christian, a a full stack software engineer that crafts intuitive user
+      experiences and responsive designs, robust APIs, and efficient database
+      designs.
     </>
   ),
 };
@@ -75,17 +75,19 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://calendar.app.google/JepYNPUuk6d9eLoDA",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for
-        transforming complex challenges into simple, elegant design solutions.
-        Her work spans digital interfaces, interactive experiences, and the
-        convergence of design and technology.
+        Christian is a software developer who thrives on solving complex
+        challenges through clean, efficient code and innovative solutions. With
+        expertise in full-stack web development, database design, and crafting
+        dynamic user interfaces, they bring a unique blend of technical
+        precision and creativity to every project, delivering tools that are
+        both functional and impactful.
       </>
     ),
   },
@@ -94,23 +96,31 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Heritage Operations - Evergreen Village",
+        company: "Evergreen Village - Heritage Operations",
         timeframe: "2024 - Present",
         role: "Director of Maintenance",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20%
-            increase in user engagement and 30% faster load times.
+            Manage scheduling, budgeting, and daily operations for maintenance
+            and housekeeping departments, ensuring optimal performance and
+            resource allocation.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows,
-            enabling designers to iterate 50% faster.
+            Designed and created a custom housekeeping managment application to
+            replace written records previously used by department for tracking
+            status of rooms.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: "/images/projects/hsk/hskp-dash-view.png",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/hsk/hsk-dash-no-task.png",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -118,20 +128,64 @@ const about = {
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "AnswerNet",
+        timeframe: "2022 - 2024",
+        role: "Programmer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple
-            platforms, improving design consistency by 40%.
+            Developed and implemented .NET APIs for OPID status callback
+            registration and updates as well as web portal to view.
           </>,
           <>
-            Led a cross-functional team to launch a new product line,
-            contributing to a 15% increase in overall company revenue.
+            Developed automated data import pipelines to process Excel, CSV, and
+            tab-delimited files using .NET, enhancing lead management
+            efficiency. and enhanced data export functionality by generating
+            Excel and CSV reports programmatically, tailored to client needs.
           </>,
         ],
         images: [],
+      },
+      {
+        company: "Carte",
+        timeframe: "2022",
+        role: "Full Stack Software Engineer",
+        achievements: [
+          <>
+            Architectured and designed database tables, APIs, and responsive
+            view for analytics and for the menu and order customization.
+          </>,
+          <>
+            Integrated Stripe for secure and seamless payment processing,
+            enhancing user transaction experiences.
+          </>,
+        ],
+        images: [
+          // optional: leave the array empty if you don't want to display images
+          {
+            src: "/images/projects/carte/carte-analytics.png",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/carte-pie.png",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/menu-view.png",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/CarteTables.png",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
@@ -159,19 +213,37 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "ReactJS",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>
+            I have extensive experience building dynamic and responsive
+            front-end applications using ReactJS, including implementing
+            advanced state management, reusable components, and custom hooks. My
+            work has ranged from interactive dashboards to real-time data-driven
+            tools, with a focus on delivering seamless user experiences.
+          </>
         ),
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/carte/carte-analytics.png",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/carte/carte-pie.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/personal/old-portfolio.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/personal/personal-site.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -179,13 +251,58 @@ const about = {
         ],
       },
       {
-        title: "Next.js",
+        title: ".NET",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            I have strong expertise in developing robust back-end systems using
+            .NET, including crafting APIs with ASP.NET, integrating Entity
+            Framework for efficient database management, and implementing
+            modular and scalable architectures. My projects include designing
+            and deploying server-side logic for analytics dashboards and
+            real-time applications.
+          </>
+        ),
+        images: [
+          // {
+          //   src: "/images/projects/project-01/cover-04.jpg",
+          //   alt: "Project image",
+          //   width: 16,
+          //   height: 9,
+          // },
+        ],
+      },
+      {
+        title: "SQL",
+        description: (
+          <>
+            I am skilled in writing efficient SQL queries and stored procedures
+            for data analysis, reporting, and application integration. I have
+            designed normalized databases, implemented complex joins and
+            aggregations, and optimized performance for large datasets in
+            production environments.
+          </>
         ),
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/carte/CarteTables.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/Menu.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/sql-query.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/carte/sql-query2.png",
             alt: "Project image",
             width: 16,
             height: 9,
