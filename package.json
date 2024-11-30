@@ -4,6 +4,7 @@
   "scripts": {
     "vercel-build": "npm run prepare && next build",
     "dev": "next dev",
+    "prepare": "next prepare",
     "export": "next export",
     "build": "next build",
     "start": "next start",
