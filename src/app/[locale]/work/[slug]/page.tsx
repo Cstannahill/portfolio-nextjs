@@ -197,7 +197,7 @@ export default async function Project({
             {formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
-        {/* <CustomMDX source={post.content} /> */}
+        <CustomMDX source={post.content} />
       </Flex>
     </Flex>
   );
