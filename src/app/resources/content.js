@@ -84,10 +84,10 @@ const about = {
       <>
         Christian is a software developer who thrives on solving complex
         challenges through clean, efficient code and innovative solutions. With
-        expertise in full-stack web development, database design, and crafting
-        dynamic user interfaces, they bring a unique blend of technical
-        precision and creativity to every project, delivering tools that are
-        both functional and impactful.
+        expertise in full-stack web development, database design, API
+        development, API consumption, crafting dynamic user interfaces, they
+        bring a unique blend of technical precision and creativity to every
+        project, delivering tools that are both functional and impactful.
       </>
     ),
   },
