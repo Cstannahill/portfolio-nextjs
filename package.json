@@ -1,24 +1,33 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
+  "name": "christian-tannahill-portfolio",
   "version": "0.2.0",
   "scripts": {
-    "vercel-build": "npm run prepare && next build",
     "dev": "next dev",
-    "prepare": "next prepare",
     "export": "next export",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cstannahill/portfolio-nextjs.git"
+  },
+  "author": "Christian Tannahill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cstannahill/portfolio-nextjs/issues"
+  },
+  "homepage": "https://github.com/Cstannahill/portfolio-nextjs#readme",
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.1",
     "@mdx-js/loader": "^3.1.0",
-    "@next/mdx": "^14.2.16",
+    "@next/mdx": "^15.0.3",
     "classnames": "^2.5.1",
-    "cookie": "^1.0.1",
+    "compressorjs": "^1.2.1",
+    "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
-    "next": "^15.0.3",
-    "next-intl": "^3.23.5",
+    "next": "^14.2.4",
+    "next-intl": "^3.25.3",
     "next-mdx-remote": "^5.0.0",
     "postcss": "^8.4.39",
     "postcss-preset-env": "^9.5.15",
@@ -27,14 +36,11 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "react-masonry-css": "^1.0.16",
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
     "sass": "^1.77.6",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
-    "@types/cookie": "^0.6.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
