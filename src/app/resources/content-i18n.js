@@ -69,7 +69,7 @@ const createI18nContent = (t) => {
     },
     calendar: {
       display: true,
-      link: "https://cal.com",
+      link: "https://calendar.app.google/JepYNPUuk6d9eLoDA",
     },
     intro: {
       display: true,
