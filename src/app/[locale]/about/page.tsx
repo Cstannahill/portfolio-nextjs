@@ -179,7 +179,7 @@ export default async function About({
                 <Flex paddingLeft="12">
                   <Icon name="calendar" onBackground="brand-weak" />
                 </Flex>
-                {/* <Flex paddingX="8">Schedule a call</Flex> */}
+                <Flex paddingX="8">Schedule a meeting</Flex>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
