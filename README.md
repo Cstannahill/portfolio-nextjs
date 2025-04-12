@@ -1,82 +1,108 @@
-# **Build your portfolio with Once UI's Magic Portfolio**
+# 💼 Personal Developer Portfolio
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+![Preview](./public/og-image.jpg) <!-- Update with your actual OG image or preview path -->
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
+This is my personal developer portfolio — a fully responsive, modern site built using `Next.js`, `TypeScript`, `MDX`, and a custom design system known as `Once UI`.
 
-**2. Install dependencies**
-```
-npm install
-```
+> ✅ Originally based on [Magic Portfolio by Once UI](https://github.com/once-ui-system/magic-portfolio), this project has been **heavily modified, curated, and extended** to fit my needs as a software developer and to showcase my actual work and code contributions.
 
-**3. Run dev server**
-```
-npm run dev
-```
+---
 
-**4. Edit config**
-```
-src/app/resources/config
-```
+## 📌 What This Is
 
-**5. Edit content**
-```
-src/app/resources/content (or content-i18n for localization)
-```
+- ✅ **Multilingual** (EN / ID) portfolio using `Next.js App Router`
+- ✅ Blog and project content rendered from local `.mdx` files
+- ✅ Reusable UI components built using the `Once UI` design system
+- ✅ OG image generation, dynamic routing, sitemap, and SEO
+- ✅ API integration for email collection and route authentication
+- ✅ Clean, professional theme with custom routing, feature breakdowns, and structured project write-ups
 
-**6. Create blog posts / projects**
-```
-Add a new .mdx file to src/app/[locale]/blog/posts or src/app/[locale]/work/projects
-```
+---
 
-# **Features**
+## 🚧 What I Added or Built Myself
 
-## **Once UI**
-- All tokens, components & features of [Once UI](https://once-ui.com)
+While this project began as a professional-grade template, I treated it as a real development project — modifying and extending it to match my vision and deepen my understanding of advanced frontend architecture.
 
-## **SEO**
-- Automatic open-graph and X image generation with next/og
-- Automatic schema and metadata generation based on the content file
+### 🧠 Major Contributions
 
-## **Design**
-- Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+- **Custom Project Routing**
+  - Implemented `[locale]/work/[slug]/page.tsx` for dynamically loading project pages
+  - Designed project cards and extended the content schema to include feature lists, tech stack, ER diagrams, and API documentation per project
 
-## **Content**
-- Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
-- Generate and display social links automatically
-- Set up password protection for URLs
+- **Content Architecture**
+  - Replaced all template content with my **own authored `.mdx`** blog posts and case studies (e.g., Carte, HSK Management, Kanban Task Manager)
+  - Refined About and Work pages for narrative and clarity
+  - Localized MDX content across EN/ID using `content-i18n.js` and `getDictionary()` logic
 
-## **Localization (NEW)**
-- Magic Portfolio now supports localization with the next-intl library
-- See more info in resources/config.js
+- **Routing & Navigation**
+  - Added route guards with `RouteGuard.tsx`
+  - Implemented hash scrolling for smooth in-page navigation using `ScrollToHash.tsx`
+  - Fine-tuned locale middleware behavior
 
-# **Authors**
+- **Design & UX Enhancements**
+  - Removed unused UI components and styles from the template (e.g., DatePickers, PasswordInputs, HoloFx, etc.)
+  - Cleaned up unused token/theme entries
+  - Enhanced UI clarity and consistency via subtle spacing and typography improvements
 
-Connect with us on Threads or LinkedIn.
+---
 
-Lorant Toth: [Threads](https://www.threads.net/@lorant.one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
-Zsofia Komaromi: [Threads](https://www.threads.net/@zsofia_kom), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
+## 🧠 Why This Project Mattered
 
-Localization added by [François Hernandez](https://github.com/francoishernandez)
+When I started working on this, I was still relatively new to TypeScript, SCSS-based design systems, and the App Router in Next.js. By extending and modifying this project:
 
-# **Get involved**
+- I learned to **understand and navigate a large-scale component system**
+- I practiced **reading unfamiliar codebases and safely refactoring**
+- I developed real comfort with **hybrid MDX/JSX rendering**
+- I grew as a developer by **building features that didn’t exist and weren’t documented**
 
-- Join the [Design Engineers Club on Discord](https://discord.com/invite/5EyAQ4eNdS) and share your portfolio with us!
-- Report a [bug](https://github.com/once-ui-system/magic-portfolio/issues/new?labels=bug&template=bug_report.md).
+This wasn’t just "customizing a template" — it was an immersive frontend deep dive that sharpened my engineering judgment, tooling literacy, and architectural discipline.
 
-# **License**
+---
 
-Distributed under the CC BY-NC 4.0 License.
-- Commercial usage is not allowed.
-- Attribution is required.
+## 📁 Tech Stack
 
-See `LICENSE.txt` for more information.
+| Tool | Purpose |
+|------|---------|
+| `Next.js` | Core React framework |
+| `TypeScript` | Strong typing, safer code |
+| `App Router` | File-system based routing and layouts |
+| `MDX` | Blog and project content rendering |
+| `SCSS Modules` | Component-level styling |
+| `Once UI` | Design system with reusable UI primitives |
+| `Middleware` | Localization and redirect handling |
+| `Vercel` | Hosting and serverless deployment |
+| `API Routes` | Mailchimp auth, toast messages |
 
-# **Deploy with Vercel**
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=https%3A%2F%2Fonce-ui.com%2Fimages%2Ftemplates%2Fmagic-portfolio%2Fcover.jpg)
+---
+
+## 🧪 Live Demo & Source Code
+
+- 🔗 [Live Portfolio Site](https://cstannahill-software-dev.vercel.app/)
+- 💻 [Source Code (GitHub)](https://github.com/Cstannahill/portfolio-nextjs)
+
+---
+
+## 📌 Acknowledgements
+
+- This project was originally scaffolded from the amazing [Magic Portfolio](https://github.com/once-ui-system/magic-portfolio) template.
+- I extend my thanks to the Once UI team for their powerful foundation — it helped me explore, learn, and grow in ways I wouldn’t have otherwise.
+
+---
+
+## 🧑‍💻 About Me
+
+I'm a full-stack developer focused on building usable, scalable, and purposeful applications — from feature-rich productivity tools to immersive developer experiences.
+
+You can read more about my background and projects in the [About section](https://cstannahill-software-dev.vercel.app/about) of this portfolio.
+
+---
+
+## 📫 Contact
+
+For collaborations, freelance inquiries, or opportunities, feel free to reach out:
+- Email: `your@email.com`
+- GitHub: [@Cstannahill](https://github.com/Cstannahill)
+- LinkedIn: `linkedin.com/in/yourprofile`
+
+---
+
