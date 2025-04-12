@@ -1,6 +1,6 @@
 # 💼 Personal Developer Portfolio
 
-![Preview](./public/og-image.jpg) <!-- Update with your actual OG image or preview path -->
+![Preview](./public/prev.png) <!-- Update with your actual OG image or preview path -->
 
 This is my personal developer portfolio — a fully responsive, modern site built using `Next.js`, `TypeScript`, `MDX`, and a custom design system known as `Once UI`.
 
