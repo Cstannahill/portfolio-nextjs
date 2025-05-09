@@ -100,9 +100,10 @@ You can read more about my background and projects in the [About section](https:
 ## 📫 Contact
 
 For collaborations, freelance inquiries, or opportunities, feel free to reach out:
-- Email: `your@email.com`
+- Email: `ctan.dev@gmail.com`
 - GitHub: [@Cstannahill](https://github.com/Cstannahill)
-- LinkedIn: `linkedin.com/in/yourprofile`
+- LinkedIn: `linkedin.com/in/christiantannahill`
 
 ---
+
 
