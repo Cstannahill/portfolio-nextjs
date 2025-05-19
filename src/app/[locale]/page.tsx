@@ -68,6 +68,16 @@ export default async function About({
   const featuredProjects = await getFeaturedProjects(locale);
   const structure = [
     {
+      title: about.intro.title,
+      display: about.intro.display,
+      items: [],
+    },
+    {
+      title: "Featured Projects",
+      display: featuredProjects.length > 0,
+      items: featuredProjects.map((project) => project.title),
+    },
+    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
@@ -83,7 +93,6 @@ export default async function About({
       items: about.technical.skills.map((skill) => skill.title),
     },
   ];
-
   return (
     <Flex fillWidth maxWidth="m" direction="column">
       <script
