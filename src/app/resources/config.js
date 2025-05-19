@@ -1,4 +1,4 @@
-const baseURL = "https://cstannahill-software-dev.vercel.app/";
+const baseURL = "https://cstannahill-software-dev.vercel.app";
 
 // Enable localization
 const i18n = false;

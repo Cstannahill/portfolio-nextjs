@@ -116,7 +116,7 @@ function getProjectImages(slug: string): string[] {
   for (const folderName of possibleFolderNames) {
     const projectImagesDir = path.join(
       process.cwd(),
-      "public/images/projects",
+      `${baseURL}/images/projects`,
       folderName
     );
 
@@ -125,7 +125,7 @@ function getProjectImages(slug: string): string[] {
         const imageFiles = fs.readdirSync(projectImagesDir);
         const images = imageFiles
           .filter((img) => /\.(jpg|jpeg|png|webp)$/.test(img))
-          .map((img) => `/images/projects/${folderName}/${img}`);
+          .map((img) => `${baseURL}/images/projects/${folderName}/${img}`);
 
         allImages = [...allImages, ...images];
       }
