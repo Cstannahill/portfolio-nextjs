@@ -12,8 +12,10 @@ import {
 import { baseURL, renderContent } from "@/app/resources";
 import { routing } from "@/i18n/routing";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
 import { formatDate } from "@/app/utils/formatDate";
+import { ProjectGallery } from "@/components/ProjectGallery";
+import fs from "fs";
+import path from "path";
 
 interface WorkParams {
   slug: string;
@@ -47,12 +49,8 @@ export async function generateStaticParams() {
   return allPosts;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<WorkParams>;
-}) {
-  const { slug, locale } = await params;
+export async function generateMetadata({ params }: { params: WorkParams }) {
+  const { slug, locale } = params;
   let post = getPosts([
     "src",
     "app",
@@ -104,12 +102,43 @@ export async function generateMetadata({
   };
 }
 
-export default async function Project({
-  params,
-}: {
-  params: Promise<WorkParams>;
-}) {
-  const { slug, locale } = await params;
+// Function to get all images for a project
+function getProjectImages(slug: string): string[] {
+  // Try different possible folder names based on the slug
+  const possibleFolderNames = [
+    slug,
+    slug.replace(/-/g, "_"),
+    slug.split("-").join("-"),
+  ];
+
+  let allImages: string[] = [];
+
+  for (const folderName of possibleFolderNames) {
+    const projectImagesDir = path.join(
+      process.cwd(),
+      "public/images/projects",
+      folderName
+    );
+
+    try {
+      if (fs.existsSync(projectImagesDir)) {
+        const imageFiles = fs.readdirSync(projectImagesDir);
+        const images = imageFiles
+          .filter((img) => /\.(jpg|jpeg|png|webp)$/.test(img))
+          .map((img) => `/images/projects/${folderName}/${img}`);
+
+        allImages = [...allImages, ...images];
+      }
+    } catch (error) {
+      // Continue to the next folder name
+    }
+  }
+
+  return allImages;
+}
+
+export default async function Project({ params }: { params: WorkParams }) {
+  const { slug, locale } = params;
   unstable_setRequestLocale(locale);
   let post = getPosts([
     "src",
@@ -124,13 +153,27 @@ export default async function Project({
     notFound();
   }
 
-  const t = getTranslations("work");
+  const t = await getTranslations("work");
   const { person } = renderContent(t);
 
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
     })) || [];
+
+  // Get all project images from the file system
+  const projectImages = getProjectImages(slug);
+
+  // Merge images from metadata and file system, removing duplicates
+  let allImages = [...(post.metadata.images || [])];
+  if (projectImages.length > 0) {
+    // Filter out duplicates
+    projectImages.forEach((img) => {
+      if (!allImages.includes(img)) {
+        allImages.push(img);
+      }
+    });
+  }
 
   return (
     <Flex
@@ -174,12 +217,12 @@ export default async function Project({
         </Button>
         <Heading variant="display-strong-s">{post.metadata.title}</Heading>
       </Flex>
-      {post.metadata.images.length > 0 && (
+      {allImages.length > 0 && (
         <SmartImage
           aspectRatio="16 / 9"
           radius="m"
           alt="image"
-          src={post.metadata.images[0]}
+          src={allImages[0]}
         />
       )}
       <Flex
@@ -198,6 +241,9 @@ export default async function Project({
           </Text>
         </Flex>
         <CustomMDX source={post.content} />
+
+        {/* Add Project Gallery with remaining images */}
+        {allImages.length > 1 && <ProjectGallery images={allImages} />}
       </Flex>
     </Flex>
   );

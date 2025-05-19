@@ -1,0 +1,166 @@
+---
+
+title: "Project Flow"
+summary: "Visual Project Planning for Fullstack Developers"
+publishedAt: "2024-04-20"
+technologies:
+  - "Next.js"
+  - "TypeScript"
+  - "Prisma ORM"
+  - "PostgreSQL"
+  - "Tailwind CSS"
+  - "ShadCN UI"
+  - "Redux Toolkit"
+  - "NextAuth"
+  - "Mermaid.js"
+  - "RapiDoc"
+images:
+  - "/images/projects/project-flow/pf-overview.png"
+  - "/images/projects/project-flow/pf-landing.png"
+  - "/images/projects/project-flow/pf-login.png"
+  - "/images/projects/project-flow/pf-register.png"
+  - "/images/projects/project-flow/pf-sidebar.png"
+  - "/images/projects/project-flow/pf-feats.png"
+  - "/images/projects/project-flow/pf-api.png"
+  - "/images/projects/project-flow/pf-dia3.png"
+  - "/images/projects/project-flow/pf-timelinelarge.png"
+-----------------------------------------------------------
+
+<ProjectHero
+title="Project Flow"
+subtitle="Visual Planning, Diagramming, and Feature Mapping for Developers"
+image="/images/pf-landing.png"SP
+/>
+
+## 🧠 Overview
+
+**Project Flow** is a full-featured, developer-first planning tool that bridges the gap between whiteboarding and implementation. Designed to help solo devs and teams visually map, organize, and architect software projects from idea to deployment.
+
+Whether you're tracking frontend features, defining API endpoints, structuring databases, or visualizing system architecture with diagrams—Project Flow offers a unified interface for clear thinking and structured execution.
+
+---
+
+<MediaPlayer
+  url="/videos/projects/project-flow/pf-overview.mp4"
+  title="Diagram System Demo"
+  controls={true}
+  autoplay={true}
+  loop={true}
+  muted
+  className="h-11/12"
+/>
+
+## ✨ Core Capabilities
+
+### 📋 Feature-First Planning
+
+Define and group project features with type, tags, and status chips. Visually break down functionality before implementation.
+
+<SmartImage
+  src="/images/projects/project-flow/pf-feats.png"
+  alt="Feature Planning View"
+/>
+
+### 🧩 Diagram Suite (Mermaid.js-powered)
+
+Support for:
+
+- Gantt timelines
+- C4 architecture models
+- Class diagrams
+- Flowcharts
+
+Edit diagrams with live preview, fullscreen mode, and **SVG/PNG export with bounding debug mode**.
+
+<MediaPlayer
+  url="/videos/projects/project-flow/database-diagram.mp4"
+  title="Diagram System Demo"
+  controls={true}
+  autoplay={true}
+  loop={true}
+  muted
+  className="h-11/12"
+/>
+
+### 🗃️ Database Schema Planning
+
+Drag-and-drop schema designer with support for:
+
+- Manual table/column entry
+- File imports (SQL, Prisma)
+- Relationship mapping
+- Auto-generated ER diagrams
+
+### 🧬 API Routes + OpenAPI Docs
+
+Define project-level API endpoints with descriptions, parameters, and route types. View all endpoints in a Swagger-style interactive UI powered by RapiDoc.
+
+<MediaPlayer
+  url="/videos/projects/project-flow/pf-api.mp4"
+  title="Diagram System Demo"
+  controls={true}
+  autoplay={true}
+  loop={true}
+  muted
+  className="h-11/12"
+/>
+
+---
+
+## 🧱 Architecture & Stack
+
+- **Framework**: Next.js 15 (Turbopack)
+- **Language**: TypeScript
+- **Design System**: ShadCN UI, Tailwind CSS
+- **Database**: Prisma + PostgreSQL
+- **State Management**: Redux Toolkit (global planning state)
+- **Auth**: NextAuth (Google, GitHub, Email/Password)
+- **Diagrams**: Mermaid.js + custom export/preview pipeline
+- **Docs UI**: rehype-pretty-code + MDX
+
+---
+
+## 🛠️ Design Philosophy
+
+Project Flow was built as an internal dev utility first—meant to solve real pain points around:
+
+- **Scope planning** before code
+- Aligning **frontend + backend** development
+- Having a **single source of truth** across routes, schema, and feature logic
+- Empowering architecture thinking visually
+
+---
+
+## 📈 Development Highlights
+
+- ✅ Visual Debug Export Mode (diagrams)
+- ✅ Timeline/C4 support with live rendering
+- ✅ Diagram export presets (SVG, HD, Print)
+- ✅ State-coupled layout bounding
+- ✅ Modular, navigable sidebar UI
+- ✅ Full stack-type planning experience
+
+---
+
+## 🚧 WIP + Future Roadmap
+
+- AI Planning Assistant Integration (Ororo-style contextual prompting)
+- Workspace/multi-project support
+- Real-time collab (WebSocket or Firestore layer)
+- Multi-export view (PDF spec sheet generator)
+- Context-aware diagram suggestions
+
+---
+
+## 🔗 Summary
+
+Project Flow isn’t just a project tracker. It’s a **developer’s planning cockpit**—equipping you with the right tools to think, design, and execute complex applications without losing your train of thought.
+
+💡 Built to be used **before the first line of code**.
+
+---
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Ororo" slug="ororo-desktop-ai" />
+  <ProjectCard title="UI Component Library" slug="shadyt-ui" />
+</ComponentShowcase>

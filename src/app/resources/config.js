@@ -11,9 +11,9 @@ const i18nOptions = {
 
 const routes = {
   "/": true,
-  "/about": true,
+  "/readme": true,
   "/work": true,
-  "/blog": false,
+  "/blog": true,
   "/gallery": false,
 };
 
@@ -27,10 +27,10 @@ const effects = {
   mask: "cursor", // none | cursor | topLeft | topRight | bottomLeft | bottomRight
   gradient: {
     display: true,
-    opacity: 0.4, // 0 - 1
+    opacity: 0.1, // 0 - 1
   },
   dots: {
-    display: true,
+    display: false,
     opacity: 0.4, // 0 - 1
     size: "24", // 2 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 634
   },
@@ -39,15 +39,16 @@ const effects = {
   },
 };
 
+// Make this mutable so we can update it from client components
 const style = {
   theme: "dark", // dark | light
-  neutral: "slate", // sand | gray | slate
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  neutral: "sand", // sand | gray | slate
+  brand: "yellow", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: "yellow", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
+  solidStyle: "plastic", // flat | plastic
+  border: "conservative", // rounded | playful | conservative
+  surface: "filled", // filled | translucent
   transition: "all", // all | micro | macro
 };
 
