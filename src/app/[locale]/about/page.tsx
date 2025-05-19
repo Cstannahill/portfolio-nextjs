@@ -312,13 +312,19 @@ export default async function About({
                     </Text>
                     <Flex as="ul" direction="column" gap="16">
                       {experience.achievements.map(
-                        (achievement: string, index: any) => (
+                        (
+                          achievement: {
+                            key: string;
+                            description: React.ReactNode;
+                          },
+                          index: any
+                        ) => (
                           <Text
                             as="li"
                             variant="body-default-m"
                             key={`${experience.company}-${index}`}
                           >
-                            {achievement}
+                            {achievement.description}
                           </Text>
                         )
                       )}
@@ -397,7 +403,7 @@ export default async function About({
               <Flex direction="column" fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
                   <Flex
-                    key={`${skill}-${index}`}
+                    key={`${skill.description}-${index}`}
                     fillWidth
                     gap="4"
                     direction="column"

@@ -217,14 +217,7 @@ export default async function Project({ params }: { params: WorkParams }) {
         </Button>
         <Heading variant="display-strong-s">{post.metadata.title}</Heading>
       </Flex>
-      {allImages.length > 0 && (
-        <SmartImage
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={allImages[0]}
-        />
-      )}
+
       <Flex
         style={{ margin: "auto" }}
         as="article"
