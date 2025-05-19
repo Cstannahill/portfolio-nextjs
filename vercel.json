@@ -1,4 +1,0 @@
-{
-  "functions": { "api/**.js": { "memory": 512 } },
-  "includeFiles": ["public/**"]
-}
