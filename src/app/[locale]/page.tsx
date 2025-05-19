@@ -17,6 +17,8 @@ import { useTranslations } from "next-intl";
 import { getFeaturedProjects } from "@/lib/projects";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { ProjectCarousel } from "@/components/ProjectCarousel";
+import { Experience, Institution, Skill } from "@/types/content";
+
 export async function generateMetadata({
   params,
 }: {
@@ -62,20 +64,9 @@ export default async function About({
   unstable_setRequestLocale(locale);
   const t = getTranslations("about");
   const { person, about, social } = renderContent(t);
-
   // Get featured projects
   const featuredProjects = await getFeaturedProjects(locale);
   const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: "Featured Projects",
-      display: featuredProjects.length > 0,
-      items: featuredProjects.map((project) => project.title),
-    },
     {
       title: about.work.title,
       display: about.work.display,
@@ -233,7 +224,6 @@ export default async function About({
               </Flex>
             )}
           </Flex>
-
           {about.intro.display && (
             <Flex
               direction="column"
@@ -245,7 +235,6 @@ export default async function About({
               {about.intro.description}
             </Flex>
           )}
-
           {/* Featured Projects Section with Carousel */}
           {featuredProjects.length > 0 && (
             <>
@@ -269,7 +258,6 @@ export default async function About({
               </Flex>
             </>
           )}
-
           {about.work.display && (
             <>
               <Heading
@@ -281,9 +269,9 @@ export default async function About({
                 {about.work.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
+                {about.work.experiences.map((experience) => (
                   <Flex
-                    key={`${experience.company}-${experience.role}-${index}`}
+                    key={`${experience.company}`}
                     fillWidth
                     direction="column"
                   >
@@ -311,23 +299,24 @@ export default async function About({
                       {experience.role}
                     </Text>
                     <Flex as="ul" direction="column" gap="16">
-                      {experience.achievements.map(
-                        (achievement: string, index: any) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        )
-                      )}
+                      {experience.achievements.map((achievement: any) => (
+                        <Text
+                          as="li"
+                          variant="body-default-m"
+                          key={
+                            achievement.key ||
+                            `achievement-${achievement.description}`
+                          }
+                        >
+                          {achievement.description || achievement}
+                        </Text>
+                      ))}
                     </Flex>
                     {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
+                        {experience.images.map((image) => (
                           <Flex
-                            key={index}
+                            key={`${image.src}`}
                             border="neutral-medium"
                             borderStyle="solid-1"
                             radius="m"
@@ -351,7 +340,6 @@ export default async function About({
               </Flex>
             </>
           )}
-
           {about.studies.display && (
             <>
               <Heading
@@ -363,9 +351,9 @@ export default async function About({
                 {about.studies.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
+                {about.studies.institutions.map((institution) => (
                   <Flex
-                    key={`${institution.name}-${index}`}
+                    key={`${institution.name}`}
                     fillWidth
                     gap="4"
                     direction="column"
@@ -384,7 +372,6 @@ export default async function About({
               </Flex>
             </>
           )}
-
           {about.technical.display && (
             <>
               <Heading
@@ -396,9 +383,9 @@ export default async function About({
                 {about.technical.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
+                {about.technical.skills.map((skill) => (
                   <Flex
-                    key={`${skill}-${index}`}
+                    key={`${skill.title}`}
                     fillWidth
                     gap="4"
                     direction="column"
@@ -407,11 +394,10 @@ export default async function About({
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
-                    {skill.images.length > 0 && (
+                    {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                        {skill.images.map((image) => (
                           <Flex
-                            key={index}
                             border="neutral-medium"
                             borderStyle="solid-1"
                             radius="m"

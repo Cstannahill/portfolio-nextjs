@@ -26,15 +26,18 @@ While this project began as a professional-grade template, I treated it as a rea
 ### 🧠 Major Contributions
 
 - **Custom Project Routing**
+
   - Implemented `[locale]/work/[slug]/page.tsx` for dynamically loading project pages
   - Designed project cards and extended the content schema to include feature lists, tech stack, ER diagrams, and API documentation per project
 
 - **Content Architecture**
+
   - Replaced all template content with my **own authored `.mdx`** blog posts and case studies (e.g., Carte, HSK Management, Kanban Task Manager)
   - Refined About and Work pages for narrative and clarity
   - Localized MDX content across EN/ID using `content-i18n.js` and `getDictionary()` logic
 
 - **Routing & Navigation**
+
   - Added route guards with `RouteGuard.tsx`
   - Implemented hash scrolling for smooth in-page navigation using `ScrollToHash.tsx`
   - Fine-tuned locale middleware behavior
@@ -61,17 +64,17 @@ This wasn’t just "customizing a template" — it was an immersive frontend dee
 
 ## 📁 Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| `Next.js` | Core React framework |
-| `TypeScript` | Strong typing, safer code |
-| `App Router` | File-system based routing and layouts |
-| `MDX` | Blog and project content rendering |
-| `SCSS Modules` | Component-level styling |
-| `Once UI` | Design system with reusable UI primitives |
-| `Middleware` | Localization and redirect handling |
-| `Vercel` | Hosting and serverless deployment |
-| `API Routes` | Mailchimp auth, toast messages |
+| Tool           | Purpose                                   |
+| -------------- | ----------------------------------------- |
+| `Next.js`      | Core React framework                      |
+| `TypeScript`   | Strong typing, safer code                 |
+| `App Router`   | File-system based routing and layouts     |
+| `MDX`          | Blog and project content rendering        |
+| `SCSS Modules` | Component-level styling                   |
+| `Once UI`      | Design system with reusable UI primitives |
+| `Middleware`   | Localization and redirect handling        |
+| `Vercel`       | Hosting and serverless deployment         |
+| `API Routes`   | Mailchimp auth, toast messages            |
 
 ---
 
@@ -100,10 +103,9 @@ You can read more about my background and projects in the [About section](https:
 ## 📫 Contact
 
 For collaborations, freelance inquiries, or opportunities, feel free to reach out:
+
 - Email: `ctan.dev@gmail.com`
 - GitHub: [@Cstannahill](https://github.com/Cstannahill)
 - LinkedIn: `linkedin.com/in/christiantannahill`
 
 ---
-
-

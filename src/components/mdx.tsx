@@ -21,6 +21,15 @@ import { SummaryTable } from "@/components/ui/blog/SummaryTable";
 import { Callout } from "@/components/ui/blog/Callout";
 import { FeatureList } from "@/components/ui/blog/FeatureList";
 
+// Import our custom project UI components
+import {
+  ProjectTechStack,
+  ProjectTimeline,
+  ProjectFeatureShowcase,
+  ProjectMetrics,
+  ProjectChallengeCard,
+} from "@/components/ui/project";
+
 type TableProps = {
   data: {
     headers: string[];
@@ -176,6 +185,13 @@ const components = {
   SummaryTable,
   Callout,
   FeatureList,
+
+  // Add our custom project UI components
+  ProjectTechStack,
+  ProjectTimeline,
+  ProjectFeatureShowcase,
+  ProjectMetrics,
+  ProjectChallengeCard,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

@@ -99,31 +99,44 @@ const about = {
     experiences: [
       {
         company: "Evergreen Village - Heritage Operations",
+        key: "evergreen-village",
         timeframe: "2024 - Present",
         role: "Director of Maintenance",
         achievements: [
-          <>
-            Manage scheduling, budgeting, and daily operations for maintenance
-            and housekeeping departments, ensuring optimal performance and
-            resource allocation.
-          </>,
-          <>
-            Designed and created a custom housekeeping managment application to
-            replace written records previously used by department for tracking
-            status of rooms.
-          </>,
+          {
+            key: "evergreen-village-achievement-1",
+            description: (
+              <>
+                Manage scheduling, budgeting, and daily operations for
+                maintenance and housekeeping departments, ensuring optimal
+                performance and resource allocation.
+              </>
+            ),
+          },
+          {
+            key: "evergreen-village-achievement-2",
+            description: (
+              <>
+                Designed and created a custom housekeeping managment application
+                to replace written records previously used by department for
+                tracking status of rooms.
+              </>
+            ),
+          },
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/hsk/hskp-dash-view.png",
             alt: "Once UI Project",
+            key: "hskp-dash-view",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/hsk/hsk-dash-no-task.png",
             alt: "Once UI Project",
+            key: "hsk-dash-no-task",
             width: 16,
             height: 9,
           },
@@ -131,58 +144,86 @@ const about = {
       },
       {
         company: "AnswerNet",
+        key: "answernet",
         timeframe: "2022 - 2024",
         role: "Programmer",
         achievements: [
-          <>
-            Developed and implemented .NET APIs for OPID status callback
-            registration and updates as well as web portal to view.
-          </>,
-          <>
-            Developed automated data import pipelines to process Excel, CSV, and
-            tab-delimited files using .NET, enhancing lead management
-            efficiency. and enhanced data export functionality by generating
-            Excel and CSV reports programmatically, tailored to client needs.
-          </>,
+          {
+            key: "answernet-achievement-1",
+            description: (
+              <>
+                Developed and implemented .NET APIs for OPID status callback
+                registration and updates as well as web portal to view.
+              </>
+            ),
+          },
+          {
+            key: "answernet-achievement-2",
+            description: (
+              <>
+                Developed automated data import pipelines to process Excel, CSV,
+                and tab-delimited files using .NET, enhancing lead management
+                efficiency. and enhanced data export functionality by generating
+                Excel and CSV reports programmatically, tailored to client
+                needs.
+              </>
+            ),
+          },
         ],
         images: [],
       },
       {
         company: "Carte",
+        key: "carte",
         timeframe: "2022",
         role: "Full Stack Software Engineer",
         achievements: [
-          <>
-            Architectured and designed database tables, APIs, and responsive
-            view for analytics and for the menu and order customization.
-          </>,
-          <>
-            Integrated Stripe for secure and seamless payment processing,
-            enhancing user transaction experiences.
-          </>,
+          {
+            key: "carte-analytics",
+            description: (
+              <>
+                Architectured and designed database tables, APIs, and responsive
+                view for analytics and for the menu and order customization.
+              </>
+            ),
+          },
+          {
+            key: "carte-integration",
+            description: (
+              <>
+                Integrated Stripe for secure and seamless payment processing,
+                enhancing user transaction experiences.
+              </>
+            ),
+          },
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/carte/carte-analytics.png",
+            key: "carte-analytics",
             alt: "Once UI Project",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/carte-pie.png",
+
+            key: "carte-pie",
             alt: "Once UI Project",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/menu-view.png",
+            key: "carte-menu-view",
             alt: "Once UI Project",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/CarteTables.png",
+            key: "carte-tables",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -197,6 +238,7 @@ const about = {
     institutions: [
       {
         name: "Sabio Full Stack Software Development Bootcamp",
+        key: "sabio",
         description: (
           <>
             Completed 530+ hours of intensive training in ReactJS, .NET, SQL,
@@ -216,6 +258,7 @@ const about = {
     skills: [
       {
         title: "ReactJS",
+        key: "reactjs",
         description: (
           <>
             I have extensive experience building dynamic and responsive
@@ -228,24 +271,28 @@ const about = {
         images: [
           {
             src: "/images/projects/carte/carte-analytics.png",
+            key: "carte-analytics",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/carte-pie.png",
+            key: "carte-pie",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/personal/old-portfolio.png",
+            key: "old-portfolio",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/personal/personal-site.png",
+            key: "personal-site",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -254,6 +301,7 @@ const about = {
       },
       {
         title: ".NET",
+        key: "dotnet",
         description: (
           <>
             I have strong expertise in developing robust back-end systems using
@@ -275,6 +323,7 @@ const about = {
       },
       {
         title: "SQL",
+        key: "sql",
         description: (
           <>
             I am skilled in writing efficient SQL queries and stored procedures
@@ -287,24 +336,28 @@ const about = {
         images: [
           {
             src: "/images/projects/carte/CarteTables.png",
+            key: "carte-tables",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/Menu.png",
+            key: "carte-menu",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/sql-query.png",
+            key: "carte-sql-query",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/carte/sql-query2.png",
+            key: "carte-sql-query2",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -334,6 +387,7 @@ const work = {
 const projects = [
   {
     title: "Project Flow",
+    key: "project-flow",
     slug: "project-flow",
     description: (
       <>
@@ -344,8 +398,14 @@ const projects = [
       </>
     ),
     images: [
-      <Image src="/images/projects/project-flow/pf-overview.png" />,
-      <Image src="/images/projects/project-flow/pf-overview2.png" />,
+      <Image
+        key="pf-overview"
+        src="/images/projects/project-flow/pf-overview.png"
+      />,
+      <Image
+        key="pf-overview2"
+        src="/images/projects/project-flow/pf-overview2.png"
+      />,
     ],
     date: "2024-04-08",
     technologies: ["ReactJS", ".NET", "SQL", "NextJS", "TailwindCSS", "Redux"],
@@ -359,71 +419,85 @@ const gallery = {
   images: [
     {
       src: "/images/gallery/img-01.jpg",
+      key: "gallery-img-01",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-02.jpg",
+      key: "gallery-img-02",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-03.jpg",
+      key: "gallery-img-03",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-04.jpg",
+      key: "gallery-img-04",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-05.jpg",
+      key: "gallery-img-05",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-06.jpg",
+      key: "gallery-img-06",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-07.jpg",
+      key: "gallery-img-07",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-08.jpg",
+      key: "gallery-img-08",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-09.jpg",
+      key: "gallery-img-09",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-10.jpg",
+      key: "gallery-img-10",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-11.jpg",
+      key: "gallery-img-11",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-12.jpg",
+      key: "gallery-img-12",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-13.jpg",
+      key: "gallery-img-13",
       alt: "image",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-14.jpg",
+      key: "gallery-img-14",
       alt: "image",
       orientation: "horizontal",
     },
@@ -435,21 +509,42 @@ const projectFlow = {
   summary: "Visual Project Planning for Fullstack Developers",
   publishedAt: "2024-04-08",
   images: [
-    <Image src="/images/projects/project-flow/pf-overview.png" />,
-    <Image src="/images/projects/project-flow/pf-overview2.png" />,
-    <Image src="/images/projects/project-flow/pf-login.png" />,
-    <Image src="/images/projects/project-flow/pf-register.png" />,
-    <Image src="/images/projects/project-flow/pf-landing.png" />,
-    <Image src="/images/projects/project-flow/pf-dia.png" />,
-    <Image src="/images/projects/project-flow/pf-db-dia.png" />,
-    <Image src="/images/projects/project-flow/pf-api.png" />,
-    <Image src="/images/projects/project-flow/pf-c4.png" />,
-    <Image src="/images/projects/project-flow/pf-timelinelarge.png" />,
+    <Image
+      key="pf-overview"
+      src="/images/projects/project-flow/pf-overview.png"
+    />,
+    <Image
+      key="pf-overview2"
+      src="/images/projects/project-flow/pf-overview2.png"
+    />,
+    <Image key="pf-login" src="/images/projects/project-flow/pf-login.png" />,
+    <Image
+      key="pf-register"
+      src="/images/projects/project-flow/pf-register.png"
+    />,
+    <Image
+      key="pf-landing"
+      src="/images/projects/project-flow/pf-landing.png"
+    />,
+    <Image key="pf-dia" src="/images/projects/project-flow/pf-dia.png" />,
+    <Image key="pf-db-dia" src="/images/projects/project-flow/pf-db-dia.png" />,
+    <Image key="pf-api" src="/images/projects/project-flow/pf-api.png" />,
+    <Image key="pf-c4" src="/images/projects/project-flow/pf-c4.png" />,
+    <Image
+      key="pf-timelinelarge"
+      src="/images/projects/project-flow/pf-timelinelarge.png"
+    />,
   ],
   video: [
-    <MediaPlayer src="/videos/projects/project-flow/pf-overview.mp4" />,
-    <MediaPlayer src="/videos/projects/project-flow/database-diagram.mp4" />,
-    <MediaPlayer src="/videos/projects/project-flow/pf-api.mp4" />,
+    <MediaPlayer
+      key="pf-overview"
+      src="/videos/projects/project-flow/pf-overview.mp4"
+    />,
+    <MediaPlayer
+      key="pf-db-dia"
+      src="/videos/projects/project-flow/database-diagram.mp4"
+    />,
+    <MediaPlayer key="pf-api" src="/videos/projects/project-flow/pf-api.mp4" />,
   ],
 };
 
