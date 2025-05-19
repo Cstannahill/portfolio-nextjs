@@ -127,14 +127,14 @@ const about = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/hsk/hskp-dash-view.png",
+            src: "/images/projects/hsk/1.png",
             alt: "Once UI Project",
             key: "hskp-dash-view",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/hsk/hsk-dash-no-task.png",
+            src: "/images/projects/hsk/2.png",
             alt: "Once UI Project",
             key: "hsk-dash-no-task",
             width: 16,

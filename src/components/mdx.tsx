@@ -173,6 +173,7 @@ const components = {
   CodeBlock,
   SmartImage,
   MediaPlayer,
+  VideoPlayer: MediaPlayer, // Add alias for VideoPlayer that points to MediaPlayer
   ProjectHero,
   ComponentShowcase,
   ProjectCard,

@@ -1,0 +1,10 @@
+# public/robots.txt  ── generated once and version‑controlled
+User-Agent: *
+Allow: /
+
+# Block only build artefacts or preview content
+Disallow: /api/
+Disallow: /draft/
+
+
+Sitemap: https://cstannahill-software-dev.vercel.app/sitemap.xml
