@@ -1,0 +1,103 @@
+---
+title: "Ororo Desktop AI Integration"
+summary: "Electron-based AI coding assistant with local project context and persistent memory."
+technologies:
+  - "Electron"
+  - "React"
+  - "TypeScript"
+  - "SQLite"
+  - "OpenAI API"
+  - "Vite"
+  - "Tailwind CSS"
+images:
+  - "/images/projects/ororo-desktop-ai-integration/aichatsummary.png"
+  - "/images/projects/ororo-desktop-ai-integration/aichat2.png"
+  - "/images/projects/ororo-desktop-ai-integration/aichatindex.png"
+  - "/images/projects/ororo-desktop-ai-integration/aichatsavesummary.png"
+  - "/images/projects/ororo-desktop-ai-integration/oooo.png"
+  - "/images/projects/ororo-desktop-ai-integration/roro.png"
+  - "/images/projects/ororo-desktop-ai-integration/screen-shot.png"
+---
+
+<ProjectHero
+  title="Ororo Desktop AI Integration"
+  subtitle="Electron-based AI coding assistant with local project context and persistent memory."
+/>
+
+## 🧠 Overview
+
+**Ororo Desktop AI Integration** is an Electron-based desktop application designed to function as an AI-powered pair programmer and coding assistant. Its core goal is to overcome the context limitations of standard LLMs by providing the AI with persistent memory and direct access to local project files and structures. Ororo assists users with planning, designing, coding, debugging, and documenting software projects through an interactive chat interface.
+
+The assistant leverages local storage for project structures and user preferences/memories, combined with Retrieval-Augmented Generation (RAG) techniques and specific filesystem tools to provide contextually relevant and actionable help.
+
+---
+
+## ✨ Core Capabilities
+
+- **AI Chat Interface**: Interact with an OpenAI-powered assistant (currently GPT-4) via a chat UI, supporting multi-turn conversations and history context.
+- **Project Indexing**: Select and index local project folders. The app scans and stores the directory/file structure in a local SQLite database, respecting exclusions and depth limits.
+- **Context Awareness**: The AI is aware of all indexed projects, and the active project's name and root path are included in its context. It can read and summarize files, list directories, and provide context-aware answers.
+- **Persistent Memory (RAG)**: The AI can save and recall user preferences, project notes, and key facts using vector embeddings and cosine similarity search over a local SQLite database.
+- **Filesystem Tools**: The AI can list directories, read files, create/edit files and folders, and append notes to a project-specific AIContext.md file.
+- **User Insights**: Save and retrieve user preferences (e.g., preferred frameworks) and project-specific notes for more personalized assistance.
+- **Secure API Key Management**: Stores the user's OpenAI API key securely using electron-store.
+- **Modular Codebase**: Backend logic is organized into modules for types, tools, database, context processing, and IPC handling.
+- **Dark Theme UI**: Basic dark theme with cyan accents, sidebar for project selection, and main chat area.
+
+---
+
+## 🧱 Architecture & Stack
+
+- **Framework**: Electron
+- **UI**: React (Vite), TypeScript, Tailwind CSS (planned for full implementation)
+- **Build System**: Vite + electron-vite
+- **Backend**: Node.js (Electron Main Process)
+- **Database**: SQLite (for project index, user preferences, embeddings)
+- **Local Config**: electron-store (API key storage)
+- **AI**: OpenAI API (Chat Completions, Embeddings, Tool Calling)
+- **Other**: Modular folder structure, IPC for main/renderer communication
+
+---
+
+## 🛠️ Design Philosophy
+
+- **Context-Rich AI**: Overcome LLM context window limits by providing the AI with project structure, file contents, and persistent user memories.
+- **User Empowerment**: Enable developers to query, edit, and document their codebase through natural language.
+- **Privacy & Local Control**: All project data and memories are stored locally; only user-approved queries are sent to OpenAI.
+- **Extensibility**: Modular codebase for easy addition of new tools, memory types, or UI features.
+
+---
+
+## 📈 Development Highlights
+
+- ✅ Project indexing and context injection for AI
+- ✅ Persistent memory with vector embeddings
+- ✅ Filesystem tool integration (read, write, edit, list)
+- ✅ Project-specific context files (AIContext.md)
+- ✅ Secure API key management
+- ✅ Modular backend and IPC structure
+
+---
+
+## 🚧 WIP + Future Roadmap
+
+- Full Tailwind CSS UI implementation
+- Improved error/status display and copy buttons
+- Semantic project structure search (vector embeddings for structure)
+- Optimized memory search (vector DB or SQLite extensions)
+- More granular file editing (diffs, line replacements)
+- Enhanced visualization of context/tools
+- Packaging and cross-platform builds
+
+---
+
+## 🔗 Summary
+
+Ororo Desktop AI Integration is a next-generation coding assistant that bridges the gap between local development and AI-powered productivity. By combining persistent memory, project context, and powerful filesystem tools, it empowers developers to work smarter and faster—all from a secure, local desktop app.
+
+---
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Portfolio Next.js" slug="portfolio-nextjs" />
+  <ProjectCard title="AI Campfire Chat" slug="ai-campfire-chat" />
+</ComponentShowcase>

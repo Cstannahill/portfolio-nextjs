@@ -1,0 +1,897 @@
+{
+  "entities": [
+    {
+      "name": "Portfolio Website",
+      "entityType": "Project",
+      "observations": [
+        "A personal portfolio website for Christian Tannahill built with Next.js",
+        "Uses App Router for routing",
+        "Version 0.2.0",
+        "Implements internationalization using next-intl",
+        "The website is a professional portfolio for Christian Tannahill",
+        "Features sections for projects, blog, work experience, and about",
+        "Uses modern web technologies and follows best practices",
+        "Organized into localized routes with internationalization support"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "entityType": "Technology",
+      "observations": [
+        "Version 14.2.4 used in the project",
+        "App Router is used for routing",
+        "RSC (React Server Components) enabled",
+        "Uses the App Router architecture",
+        "Leverages both static and dynamic rendering",
+        "Configured with MDX and next-intl plugins",
+        "Version 14.2.4 in this project"
+      ]
+    },
+    {
+      "name": "Tailwind CSS",
+      "entityType": "Technology",
+      "observations": [
+        "Used for styling throughout the project",
+        "Version 4.1.7 used",
+        "Extended with custom theme configuration",
+        "Uses the New York style from ShadCN UI",
+        "Used alongside CSS Modules for component-specific styling",
+        "Configured with plugins for typography and container queries",
+        "Includes custom color scheme and font configurations"
+      ]
+    },
+    {
+      "name": "ShadCN UI",
+      "entityType": "Technology",
+      "observations": [
+        "Component library used for UI elements",
+        "Has been configured with New York style",
+        "Components include Button, Card, Progress, Switch, etc.",
+        "Uses Radix UI primitives underneath",
+        "Configured with the New York style",
+        "Components are customized with Tailwind CSS",
+        "Used for consistent UI elements across the site"
+      ]
+    },
+    {
+      "name": "Internationalization",
+      "entityType": "Feature",
+      "observations": [
+        "Implemented using next-intl package",
+        "Configured with locale detection in middleware",
+        "Default locale is 'en'",
+        "Uses file-based routing with [locale] parameter",
+        "Supports multiple languages including English (default)",
+        "Uses next-intl for translation management",
+        "Configured with middleware for locale detection",
+        "Uses the [locale] dynamic segment in routes"
+      ]
+    },
+    {
+      "name": "Project Content Structure",
+      "entityType": "Architecture",
+      "observations": [
+        "Projects are stored as MDX files",
+        "Projects have frontmatter with metadata",
+        "Projects can be featured on the homepage",
+        "Projects include title, summary, technologies, tags, and images"
+      ]
+    },
+    {
+      "name": "MDX",
+      "entityType": "Technology",
+      "observations": [
+        "Used for content management",
+        "Projects, blog posts, and other content are written in MDX",
+        "Custom MDX components available for enhanced content"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "entityType": "Technology",
+      "observations": [
+        "Used throughout the project",
+        "Strict typing for components and functions",
+        "Type definitions for project structure and props"
+      ]
+    },
+    {
+      "name": "React",
+      "entityType": "Technology",
+      "observations": [
+        "Version 18.3.1 used",
+        "Mix of client and server components",
+        "Server components for data fetching and rendering",
+        "Client components for interactivity"
+      ]
+    },
+    {
+      "name": "Project Card",
+      "entityType": "Component",
+      "observations": [
+        "Component to display project information",
+        "Shows title, description, date, and technologies",
+        "Has image carousel for multiple project images",
+        "Links to the full project page",
+        "Has an image carousel to navigate through project images",
+        "Shows a limited number of technology badges with a count for additional ones",
+        "Client component with interactive features"
+      ]
+    },
+    {
+      "name": "Once UI",
+      "entityType": "Component Library",
+      "observations": [
+        "Custom UI component library found in src/once-ui/",
+        "Includes components like Avatar, Button, Flex, Heading, etc.",
+        "Used throughout the application for consistent styling"
+      ]
+    },
+    {
+      "name": "Project Structure",
+      "entityType": "Architecture",
+      "observations": [
+        "Organized with App Router pattern",
+        "src/app/[locale] for internationalized routes",
+        "Components in src/components directory",
+        "Utilities and hooks separated"
+      ]
+    },
+    {
+      "name": "Content Management",
+      "entityType": "Feature",
+      "observations": [
+        "Project content stored as MDX files",
+        "Blog posts stored as MDX files",
+        "Uses gray-matter for frontmatter parsing",
+        "Custom rendering for MDX content",
+        "Projects and blog posts stored as MDX files",
+        "Frontmatter parsed with gray-matter",
+        "Content categorized by type and locale",
+        "Custom components for rendering MDX content"
+      ]
+    },
+    {
+      "name": "Data Fetching",
+      "entityType": "Pattern",
+      "observations": [
+        "Server components used for data fetching",
+        "Project data fetched in lib/projects.ts",
+        "File system used as the data source",
+        "React Cache used for memoization"
+      ]
+    },
+    {
+      "name": "Styling Approach",
+      "entityType": "Pattern",
+      "observations": [
+        "Mix of Tailwind CSS and CSS modules",
+        "ShadCN UI components with Tailwind",
+        "Custom theme configuration",
+        "Dark and light mode support via next-themes"
+      ]
+    },
+    {
+      "name": "Rendering Strategy",
+      "entityType": "Pattern",
+      "observations": [
+        "Mix of Static and Dynamic rendering",
+        "Server components for data fetching",
+        "Client components for interactivity",
+        "Progressive enhancement approach"
+      ]
+    },
+    {
+      "name": "ProjectCarousel",
+      "entityType": "Component",
+      "observations": [
+        "Component for displaying featured projects as a carousel",
+        "Used on the homepage",
+        "Shows 3 featured projects",
+        "Responsive design"
+      ]
+    },
+    {
+      "name": "Next Themes",
+      "entityType": "Library",
+      "observations": [
+        "Used for theme management",
+        "Supports dark and light mode",
+        "Persists theme preference"
+      ]
+    },
+    {
+      "name": "Middleware",
+      "entityType": "Feature",
+      "observations": [
+        "Handles locale detection and routing",
+        "Implemented with next-intl",
+        "Configures locale prefix strategy"
+      ]
+    },
+    {
+      "name": "Project Content",
+      "entityType": "Data",
+      "observations": [
+        "Each project has its own MDX file",
+        "Stored in src/app/[locale]/work/projects/[locale]",
+        "Contains frontmatter with metadata",
+        "Includes project images in public/images/projects/[slug]"
+      ]
+    },
+    {
+      "name": "Page Layout",
+      "entityType": "Component",
+      "observations": [
+        "Layout defined in src/app/[locale]/layout.tsx",
+        "Shared layout for all routes within a locale",
+        "Contains Header and Footer components"
+      ]
+    },
+    {
+      "name": "Build Process",
+      "entityType": "Configuration",
+      "observations": [
+        "Configured in next.config.mjs",
+        "MDX plugin configured",
+        "next-intl plugin configured"
+      ]
+    },
+    {
+      "name": "File-based Routing",
+      "entityType": "Pattern",
+      "observations": [
+        "Uses Next.js App Router's file-based routing",
+        "Routes organized by locale with [locale] dynamic segment",
+        "Additional dynamic segments for project slugs"
+      ]
+    },
+    {
+      "name": "Not Found Page",
+      "entityType": "Component",
+      "observations": [
+        "Custom 404 page at src/app/[locale]/not-found.tsx",
+        "Localized for each supported language"
+      ]
+    },
+    {
+      "name": "Page Structure",
+      "entityType": "Pattern",
+      "observations": [
+        "Typical structure includes main content area and sidebar",
+        "Responsive layouts that adapt to screen size",
+        "Consistent spacing and typography"
+      ]
+    },
+    {
+      "name": "Blog System",
+      "entityType": "System",
+      "observations": [
+        "Current blog implementation uses MDX files for content storage",
+        "Blog content is stored in src/app/[locale]/blog/posts/[locale] directories",
+        "Supports internationalization with next-intl",
+        "Uses gray-matter for frontmatter parsing",
+        "No database integration currently exists for blog posts",
+        "Posts include metadata like title, publishedAt, summary, image, and tags"
+      ]
+    },
+    {
+      "name": "Blog Page",
+      "entityType": "Component",
+      "observations": [
+        "Main blog page displays a list of posts sorted by publication date",
+        "Located at src/app/[locale]/blog/page.tsx",
+        "Uses Posts component to display blog posts",
+        "Includes SEO metadata and structured data markup",
+        "Includes Mailchimp newsletter signup component"
+      ]
+    },
+    {
+      "name": "Blog Post Page",
+      "entityType": "Component",
+      "observations": [
+        "Individual blog post page at src/app/[locale]/blog/[slug]/page.tsx",
+        "Displays single blog post with CustomMDX component",
+        "Includes SEO metadata and structured data markup",
+        "Includes author avatar, publication date",
+        "Uses generateStaticParams for static site generation"
+      ]
+    },
+    {
+      "name": "Posts Component",
+      "entityType": "Component",
+      "observations": [
+        "Reusable component for displaying multiple blog posts",
+        "Located at src/components/blog/Posts.tsx",
+        "Supports filtering posts by range and displaying in different column layouts",
+        "Sorts posts by publication date",
+        "Renders individual Post components"
+      ]
+    },
+    {
+      "name": "Post Component",
+      "entityType": "Component",
+      "observations": [
+        "Client component for rendering individual blog post preview",
+        "Located at src/components/blog/Post.tsx",
+        "Displays post title, publication date, optional thumbnail image, and tag",
+        "Links to full blog post page",
+        "Uses formatDate utility for date formatting"
+      ]
+    },
+    {
+      "name": "Draft System",
+      "entityType": "Feature",
+      "observations": [
+        "System for managing unpublished blog posts",
+        "Handles posts marked as draft in frontmatter",
+        "Draft posts are only visible in development",
+        "Filters out draft posts in production environment",
+        "Implemented as part of the getPosts utility function"
+      ]
+    },
+    {
+      "name": "Code Syntax Highlighting",
+      "entityType": "Feature",
+      "observations": [
+        "Feature for styling code blocks in blog posts",
+        "Uses Rehype plugins for syntax highlighting",
+        "Supports multiple programming languages",
+        "Has custom styling matching the site's theme",
+        "Integrated with MDX rendering pipeline"
+      ]
+    },
+    {
+      "name": "Table of Contents",
+      "entityType": "Component",
+      "observations": [
+        "Navigation component for long-form blog posts",
+        "Automatically generated from post headings",
+        "Provides links to different sections of a post",
+        "Supports nested heading structures",
+        "Responsive design with mobile and desktop views"
+      ]
+    },
+    {
+      "name": "Reading Time Estimator",
+      "entityType": "Feature",
+      "observations": [
+        "Calculates estimated reading time for blog posts",
+        "Based on word count and average reading speed",
+        "Displayed on blog post pages",
+        "Implemented using a utility function",
+        "Updates dynamically based on content length"
+      ]
+    },
+    {
+      "name": "Related Posts",
+      "entityType": "Feature",
+      "observations": [
+        "Suggests blog posts related to the current post",
+        "Uses tags and categories to determine relevance",
+        "Displayed at the end of blog post pages",
+        "Limited to a small number of suggestions",
+        "Helps readers discover more content"
+      ]
+    },
+    {
+      "name": "MDX Files",
+      "entityType": "ContentSource",
+      "observations": [
+        "Blog posts are stored as MDX files with frontmatter",
+        "Each post has metadata including title, publishedAt, summary, image, tag",
+        "Files are organized by locale in src/app/[locale]/blog/posts/[locale]",
+        "Posts are loaded using the getPosts utility function"
+      ]
+    },
+    {
+      "name": "Utils Functions",
+      "entityType": "Utility",
+      "observations": [
+        "getPosts utility loads and parses MDX files from specified directory",
+        "readMDXFile parses MDX content using gray-matter",
+        "getMDXFiles lists MDX files in a directory",
+        "formatDate utility formats dates for display"
+      ]
+    },
+    {
+      "name": "Content Management System",
+      "entityType": "Architecture",
+      "observations": [
+        "Content is centralized in src/app/resources/content.js",
+        "Acts as a single source of truth for site-wide content",
+        "Contains structured data imported by various pages and components",
+        "Uses React JSX fragments for rich text content",
+        "Currently static with no CMS or API integration",
+        "Content is tightly coupled with the codebase",
+        "Makes content updates require code deployment"
+      ]
+    },
+    {
+      "name": "MDX Rendering System",
+      "entityType": "Component",
+      "observations": [
+        "Implemented in src/components/mdx.tsx",
+        "Uses MDXRemote from next-mdx-remote/rsc for server component support",
+        "Provides custom React components for MDX content rendering",
+        "Maps HTML elements to custom styled components",
+        "Includes utility functions for slug generation and formatting",
+        "Supports specialized blog and project components",
+        "Handles internal/external link differentiation",
+        "Implements image optimization with enhancement features"
+      ]
+    },
+    {
+      "name": "Blog Content Structure",
+      "entityType": "Data",
+      "observations": [
+        "MDX files located in src/app/[locale]/blog/posts/[locale]",
+        "Uses frontmatter with metadata (title, publishedAt, summary, tag, author)",
+        "Consistently uses Callout components for highlighting information",
+        "Uses custom components like SkillCategory, SkillCard, FeatureList",
+        "Displays skill rankings and technical assessments",
+        "Embeds rich interactive components in content",
+        "Uses emoji for visual reinforcement"
+      ]
+    },
+    {
+      "name": "Project Content Structure",
+      "entityType": "Data",
+      "observations": [
+        "Similar structure to Blog Content but focused on projects",
+        "Located in src/app/[locale]/work/projects/[locale]",
+        "Uses specialized components like ProjectHero, ComponentShowcase",
+        "Includes project-specific metadata like technologies and dates",
+        "Features project galleries and media components"
+      ]
+    },
+    {
+      "name": "Custom Blog UI Components",
+      "entityType": "Component Library",
+      "observations": [
+        "Located in src/components/ui/blog/",
+        "Includes components like SkillCard, SkillCategory, ProgressSection, SummaryTable",
+        "Used for structured presentation of technical assessments",
+        "Provides consistent visual formatting across blog posts",
+        "Implements specialized UI patterns for skill rankings and features"
+      ]
+    },
+    {
+      "name": "Internationalization Architecture",
+      "entityType": "Feature",
+      "observations": [
+        "Uses file-based approach with [locale] dynamic segments",
+        "Content is duplicated across language files",
+        "Blog and project routes include locale twice: /[locale]/blog/posts/[locale]/",
+        "Creates potential redundancy in the URL structure",
+        "Tightly coupled with the content structure"
+      ]
+    },
+    {
+      "name": "Content Data Flow",
+      "entityType": "Pattern",
+      "observations": [
+        "Data flows from content.js or MDX files → components → rendered pages",
+        "No clear API layer or data fetching pattern for dynamic content",
+        "Content access is direct rather than through a data access layer",
+        "Creates tight coupling between content and implementation",
+        "Makes content updates require code deployment"
+      ]
+    },
+    {
+      "name": "Project UI Enhancement Plan",
+      "entityType": "Design",
+      "observations": [
+        "Current project MDX files lack the visual consistency and structured components found in blog posts",
+        "Opportunity to create specialized UI components similar to blog components but tailored for project presentation",
+        "Should maintain consistent styling with the overall design system while being optimized for project information",
+        "Goal is to make project pages more visually appealing and structured",
+        "Plan includes creating specialized components for technical specifications, features, and project timelines"
+      ]
+    },
+    {
+      "name": "ProjectTechStack",
+      "entityType": "Component",
+      "observations": [
+        "Similar to SkillCategory/SkillCard but focused on displaying technology stack used in projects",
+        "Would display technology name, logo/icon, experience level, and role in the project",
+        "Should include visual indicators for primary vs supporting technologies",
+        "Could use color coding similar to SkillCard's rank colors to indicate proficiency or importance",
+        "Would support responsive grid layout similar to SkillCategory"
+      ]
+    },
+    {
+      "name": "ProjectTimeline",
+      "entityType": "Component",
+      "observations": [
+        "Visual component to display project development stages and milestones",
+        "Would include date ranges, milestone descriptions, and status indicators",
+        "Could support both compact and expanded views",
+        "Would use visual elements like progress bars or timelines with markers",
+        "Should support responsive design for mobile viewing"
+      ]
+    },
+    {
+      "name": "ProjectFeatureShowcase",
+      "entityType": "Component",
+      "observations": [
+        "Enhanced version of FeatureList but with visual elements for project features",
+        "Would support screenshots, icons, and descriptions for each major feature",
+        "Should include interactive elements like tabs or accordions for detailed feature breakdowns",
+        "Would maintain consistent styling with other project components",
+        "Could include status indicators for implemented vs planned features"
+      ]
+    },
+    {
+      "name": "ProjectMetrics",
+      "entityType": "Component",
+      "observations": [
+        "Visual component to display quantitative project metrics",
+        "Similar to SummaryTable but with graphical elements like charts or gauges",
+        "Would display metrics like technologies used, lines of code, development time",
+        "Should support multiple visualization types (bar charts, pie charts, etc.)",
+        "Would help quantify project scope and complexity"
+      ]
+    },
+    {
+      "name": "ProjectChallengeCard",
+      "entityType": "Component",
+      "observations": [
+        "Similar to Callout component but specifically designed for highlighting project challenges and solutions",
+        "Would include problem statement, approach taken, and outcomes",
+        "Could use visual indicators for difficulty level or problem domain",
+        "Should support multiple challenge cards in a project",
+        "Would help showcase problem-solving skills and technical decision-making"
+      ]
+    },
+    {
+      "name": "ImplementationStrategy",
+      "entityType": "Process",
+      "observations": [
+        "Create reusable components in src/components/ui/project/ directory",
+        "Follow the same pattern as blog UI components with client-side components",
+        "Use Tailwind CSS for styling with consistent color schemes",
+        "Maintain TypeScript typing for all component props",
+        "Ensure all components are responsive and accessible",
+        "Create documentation for component usage in project MDX files"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "Next.js"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "Tailwind CSS"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "ShadCN UI"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "implements",
+      "to": "Internationalization"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "TypeScript"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "React"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "Once UI"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Project Structure"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "implements",
+      "to": "Content Management"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "MDX"
+    },
+    {
+      "from": "ShadCN UI",
+      "relationType": "extends",
+      "to": "Tailwind CSS"
+    },
+    {
+      "from": "Project Card",
+      "relationType": "uses",
+      "to": "ShadCN UI"
+    },
+    {
+      "from": "Project Content Structure",
+      "relationType": "part of",
+      "to": "Content Management"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Data Fetching"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Styling Approach"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Rendering Strategy"
+    },
+    {
+      "from": "ProjectCard",
+      "relationType": "part of",
+      "to": "Portfolio Website"
+    },
+    {
+      "from": "ProjectCarousel",
+      "relationType": "uses",
+      "to": "ProjectCard"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "uses",
+      "to": "Next Themes"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "implements",
+      "to": "Middleware"
+    },
+    {
+      "from": "Content Management",
+      "relationType": "manages",
+      "to": "Project Content"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "implements",
+      "to": "Page Layout"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Build Process"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "File-based Routing"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "implements",
+      "to": "Not Found Page"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "follows",
+      "to": "Page Structure"
+    },
+    {
+      "from": "Next.js",
+      "relationType": "enables",
+      "to": "File-based Routing"
+    },
+    {
+      "from": "Next.js",
+      "relationType": "enables",
+      "to": "Data Fetching"
+    },
+    {
+      "from": "MDX",
+      "relationType": "used for",
+      "to": "Project Content"
+    },
+    {
+      "from": "Internationalization",
+      "relationType": "implemented by",
+      "to": "Middleware"
+    },
+    {
+      "from": "Portfolio Website",
+      "relationType": "includes",
+      "to": "Blog System"
+    },
+    {
+      "from": "Blog System",
+      "relationType": "contains",
+      "to": "Blog Page"
+    },
+    {
+      "from": "Blog System",
+      "relationType": "contains",
+      "to": "Blog Post Page"
+    },
+    {
+      "from": "Blog System",
+      "relationType": "uses",
+      "to": "MDX Files"
+    },
+    {
+      "from": "Blog System",
+      "relationType": "uses",
+      "to": "Utils Functions"
+    },
+    {
+      "from": "Blog Page",
+      "relationType": "renders",
+      "to": "Posts Component"
+    },
+    {
+      "from": "Posts Component",
+      "relationType": "uses",
+      "to": "Post Component"
+    },
+    {
+      "from": "Blog Post Page",
+      "relationType": "implements",
+      "to": "Code Syntax Highlighting"
+    },
+    {
+      "from": "Blog Post Page",
+      "relationType": "includes",
+      "to": "Table of Contents"
+    },
+    {
+      "from": "Blog Post Page",
+      "relationType": "implements",
+      "to": "Reading Time Estimator"
+    },
+    {
+      "from": "Blog Post Page",
+      "relationType": "features",
+      "to": "Related Posts"
+    },
+    {
+      "from": "Content Management",
+      "relationType": "manages",
+      "to": "MDX Files"
+    },
+    {
+      "from": "MDX",
+      "relationType": "used for",
+      "to": "MDX Files"
+    },
+    {
+      "from": "Blog System",
+      "relationType": "implements",
+      "to": "Draft System"
+    },
+    {
+      "from": "MDX Files",
+      "relationType": "structured like",
+      "to": "Project Content"
+    },
+    {
+      "from": "Post Component",
+      "relationType": "similar to",
+      "to": "Project Card"
+    },
+    {
+      "from": "Content Management System",
+      "relationType": "provides data to",
+      "to": "MDX Rendering System"
+    },
+    {
+      "from": "MDX Rendering System",
+      "relationType": "renders",
+      "to": "Blog Content Structure"
+    },
+    {
+      "from": "MDX Rendering System",
+      "relationType": "renders",
+      "to": "Project Content Structure"
+    },
+    {
+      "from": "Blog Content Structure",
+      "relationType": "uses",
+      "to": "Custom Blog UI Components"
+    },
+    {
+      "from": "Content Management System",
+      "relationType": "participates in",
+      "to": "Content Data Flow"
+    },
+    {
+      "from": "MDX Rendering System",
+      "relationType": "participates in",
+      "to": "Content Data Flow"
+    },
+    {
+      "from": "Internationalization Architecture",
+      "relationType": "affects",
+      "to": "Blog Content Structure"
+    },
+    {
+      "from": "Internationalization Architecture",
+      "relationType": "affects",
+      "to": "Project Content Structure"
+    },
+    {
+      "from": "Custom Blog UI Components",
+      "relationType": "enhances",
+      "to": "Blog Content Structure"
+    },
+    {
+      "from": "Content Data Flow",
+      "relationType": "involves",
+      "to": "Blog Content Structure"
+    },
+    {
+      "from": "Content Data Flow",
+      "relationType": "involves",
+      "to": "Project Content Structure"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "includes",
+      "to": "ProjectTechStack"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "includes",
+      "to": "ProjectTimeline"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "includes",
+      "to": "ProjectFeatureShowcase"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "includes",
+      "to": "ProjectMetrics"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "includes",
+      "to": "ProjectChallengeCard"
+    },
+    {
+      "from": "Project UI Enhancement Plan",
+      "relationType": "follows",
+      "to": "ImplementationStrategy"
+    },
+    {
+      "from": "ProjectTechStack",
+      "relationType": "inspired by",
+      "to": "SkillCategory"
+    },
+    {
+      "from": "ProjectFeatureShowcase",
+      "relationType": "extends",
+      "to": "FeatureList"
+    },
+    {
+      "from": "ProjectChallengeCard",
+      "relationType": "similar to",
+      "to": "Callout"
+    },
+    {
+      "from": "ProjectMetrics",
+      "relationType": "similar to",
+      "to": "SummaryTable"
+    }
+  ]
+}

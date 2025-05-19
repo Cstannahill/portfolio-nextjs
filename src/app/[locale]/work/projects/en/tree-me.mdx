@@ -1,0 +1,94 @@
+---
+title: "tree-me"
+summary: "TypeScript CLI for visualizing and linking project directory trees."
+publishedAt: "2025-05-10"
+technologies:
+  - "TypeScript"
+  - "Node.js"
+  - "npm"
+tags:
+  - "CLI"
+  - "TypeScript"
+  - "Node.js"
+  - "npm"
+  - "GitHub"
+  - "Documentation"
+images:
+  - "/images/projects/tree-me/1.png"
+  - "/images/projects/tree-me/2.png"
+---
+
+{" "}
+
+<ProjectHero
+  title="Tree Me"
+  subtitle="TypeScript CLI for visualizing and linking project directory trees."
+/>
+
+## 🧠 Overview
+
+**Tree Me** is a minimal, TypeScript-powered CLI tool for recursively walking directory trees, generating relative file paths, and building sharable GitHub-style links for every file. It’s ideal for documenting, linking, or sharing the structure of your projects, and supports output in .txt, Markdown, or JSON formats. Tree Me is npm-publishing ready and designed for automation or integration into docs.
+
+---
+
+## ✨ Core Capabilities
+
+- **Recursive Directory Walk**: Traverses entire folder trees and outputs structure.
+- **GitHub-Style Links**: Generates clickable URLs for each file, using a base Git remote or custom URL.
+- **Multiple Output Formats**: Supports .txt, Markdown, and JSON outputs.
+- **Pretty-Printed Tree View**: Optional visual tree structure for easy reading.
+- **CLI Options**: Depth limiting, output file, base URL override, and more.
+- **Auto-Detects Git Remote**: Infers GitHub-compatible links if no base URL is provided.
+
+---
+
+## 🧱 Architecture & Stack
+
+- **Language**: TypeScript
+- **Distribution**: npm global CLI
+- **Structure**:
+  - `src/` – CLI logic and utilities
+  - `dist/` – Compiled JS output
+  - `package.json` – CLI entry and metadata
+- **License**: MIT
+
+---
+
+## 🛠️ Design Philosophy
+
+- **Simplicity**: Minimal dependencies, fast execution, and easy to use.
+- **Automation-Ready**: Designed for scripting, CI, and documentation workflows.
+- **Sharable**: Makes it easy to share project structure with clickable links.
+
+---
+
+## 📈 Development Highlights
+
+- ✅ Recursive directory traversal
+- ✅ GitHub-style link generation
+- ✅ Multiple output formats (txt, md, json)
+- ✅ Pretty-printed tree view
+- ✅ CLI options for depth, output, and base URL
+
+---
+
+## 🚧 WIP + Future Roadmap
+
+- Toggle between GitHub/GitLab/Bitbucket link templates
+- Include folders as clickable links
+- Export as markdown with tree + links
+- VSCode extension or GUI launcher
+- Interactive prompt for missing args
+
+---
+
+## 🔗 Summary
+
+Tree Me is a fast, flexible CLI for visualizing and sharing your project’s structure. It’s perfect for open source maintainers, technical writers, and anyone who wants to make their codebase more accessible.
+
+---
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Portfolio Next.js" slug="portfolio-nextjs" />
+  <ProjectCard title="CTGen" slug="ctgen" />
+</ComponentShowcase>

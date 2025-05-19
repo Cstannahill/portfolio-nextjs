@@ -7,6 +7,19 @@ import { HeadingLink } from "@/components";
 
 import { TextProps } from "@/once-ui/interfaces";
 import { SmartImageProps } from "@/once-ui/components/SmartImage";
+import MediaPlayer from "./media/MediaPlayer";
+import ProjectHero from "./blocks/ProjectHero";
+import ComponentShowcase from "@/components/ComponentShowcase";
+import { ProjectCard } from "@/components/ProjectCard";
+import Image from "next/image";
+
+// Import our custom blog UI components
+import { SkillCard } from "@/components/ui/blog/SkillCard";
+import { SkillCategory } from "@/components/ui/blog/SkillCategory";
+import { ProgressSection } from "@/components/ui/blog/ProgressSection";
+import { SummaryTable } from "@/components/ui/blog/SummaryTable";
+import { Callout } from "@/components/ui/blog/Callout";
+import { FeatureList } from "@/components/ui/blog/FeatureList";
 
 type TableProps = {
   data: {
@@ -149,6 +162,20 @@ const components = {
   a: CustomLink as any,
   Table,
   CodeBlock,
+  SmartImage,
+  MediaPlayer,
+  ProjectHero,
+  ComponentShowcase,
+  ProjectCard,
+  Image,
+
+  // Add our custom blog UI components
+  SkillCard,
+  SkillCategory,
+  ProgressSection,
+  SummaryTable,
+  Callout,
+  FeatureList,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

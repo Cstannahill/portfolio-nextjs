@@ -1,0 +1,84 @@
+---
+title: "Image Transformation API"
+tagline: "A lightweight, serverless-ready .NET API for on-the-fly image manipulation."
+summary: "A modern .NET 8 Web API for real-time image processing and CDN delivery."
+technologies:
+  ["C#", ".NET 8", "Docker", "Azure Functions", "Prometheus", "Serilog"]
+images:
+  - "/images/projects/image-transformation-api/1.png"
+---
+
+<ProjectHero
+  title="Image Transformation API"
+  subtitle="A lightweight, serverless-ready .NET API for on-the-fly image manipulation."
+/>
+
+## 🧠 Overview
+
+**Image Transformation API** is a modern .NET 8 Web API for real-time image processing and CDN delivery. It enables developers to resize, crop, convert, filter, and watermark images via simple HTTP endpoints. Designed for performance and scalability, it features built-in rate limiting, API key quotas, logging, and Prometheus metrics. The API is easily self-hosted (Docker, Azure Functions, Kubernetes) and is ideal for web apps, SaaS, or any service needing dynamic image handling.
+
+---
+
+## ✨ Core Capabilities
+
+- **Image Operations**: Resize, crop (rectangle/rounded), convert formats, apply filters (grayscale, invert, blur), and add watermarks.
+- **OpenAPI/Swagger**: Interactive docs and client generation for C#, TypeScript, and more.
+- **API Key Authentication**: Secure endpoints with per-key rate limiting and daily quotas.
+- **Metrics & Logging**: Serilog for structured logs, Prometheus for HTTP metrics, and health check endpoints.
+- **Docker-Ready**: Optimized Dockerfile for Alpine-based .NET runtime and native dependencies.
+- **Serverless & Cloud-Ready**: Deployable to Azure Functions, Kubernetes, or any container platform.
+
+---
+
+## 🧱 Architecture & Stack
+
+- **Framework**: .NET 8 (Minimal APIs)
+- **Language**: C# (with TypeScript SDK generation)
+- **Containerization**: Docker (Alpine-based)
+- **Metrics**: Prometheus
+- **Logging**: Serilog
+- **Docs**: OpenAPI/Swagger
+- **CI/CD**: GitHub Actions for Azure Container Registry
+
+---
+
+## 🛠️ Design Philosophy
+
+- **Performance-First**: Minimal API surface, async processing, and optimized for cloud/container environments.
+- **Security**: API key authentication, quotas, and rate limiting out of the box.
+- **Developer Experience**: Interactive Swagger docs, SDK generation, and clear error handling.
+- **Extensibility**: Modular endpoints and easy to add new filters or operations.
+
+---
+
+## 📈 Development Highlights
+
+- ✅ Minimal .NET 8 implementation with top-level statements
+- ✅ Full suite of image operations (resize, crop, convert, filter, watermark)
+- ✅ API key management and rate limiting
+- ✅ Prometheus metrics and Serilog logging
+- ✅ Docker and Azure Functions deployment
+- ✅ OpenAPI/Swagger for docs and SDKs
+
+---
+
+## 🚧 WIP + Future Roadmap
+
+- Add more image filters (sharpen, brightness, contrast)
+- AI-powered enhancements (upscaling, style transfer)
+- CDN integration (Azure CDN, Cloudflare)
+- Serverless deployment optimizations
+- Enhanced client SDKs and usage examples
+
+---
+
+## 🔗 Summary
+
+Image Transformation API is a robust, production-ready solution for dynamic image processing in modern web and cloud applications. With a focus on performance, security, and developer experience, it’s ideal for any project needing scalable, real-time image manipulation.
+
+---
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Portfolio Next.js" slug="portfolio-nextjs" />
+  <ProjectCard title="CTGen" slug="ctgen" />
+</ComponentShowcase>

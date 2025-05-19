@@ -1,4 +1,6 @@
+import MediaPlayer from "@/components/media/MediaPlayer";
 import { InlineCode } from "@/once-ui/components";
+import Image from "next/image";
 
 const person = {
   firstName: "Christian",
@@ -82,12 +84,12 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Christian is a software developer who thrives on solving complex
-        challenges through clean, efficient code and innovative solutions. With
-        expertise in full-stack web development, database design, API
-        development, API consumption, crafting dynamic user interfaces, they
-        bring a unique blend of technical precision and creativity to every
-        project, delivering tools that are both functional and impactful.
+        I am a software developer who thrives on solving complex challenges
+        through clean, efficient code and innovative solutions. With expertise
+        in full-stack web development, database design, API development, API
+        consumption, crafting dynamic user interfaces, I bring a unique blend of
+        technical precision and creativity to every project, delivering tools
+        that are both functional and impactful.
       </>
     ),
   },
@@ -314,8 +316,8 @@ const about = {
 };
 
 const blog = {
-  label: "Blog",
-  title: "Writing about design and tech...",
+  label: "More",
+  title: "More about me",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -325,10 +327,30 @@ const work = {
   label: "Work",
   title: "My projects",
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
+const projects = [
+  {
+    title: "Project Flow",
+    slug: "project-flow",
+    description: (
+      <>
+        Project Flow is a visual project planning tool designed for full-stack
+        developers. It provides an intuitive interface for creating and managing
+        project timelines, tasks, and resources, enabling teams to streamline
+        their workflow and enhance collaboration.
+      </>
+    ),
+    images: [
+      <Image src="/images/projects/project-flow/pf-overview.png" />,
+      <Image src="/images/projects/project-flow/pf-overview2.png" />,
+    ],
+    date: "2024-04-08",
+    technologies: ["ReactJS", ".NET", "SQL", "NextJS", "TailwindCSS", "Redux"],
+  },
+];
 const gallery = {
   label: "Gallery",
   title: "My photo gallery",
@@ -408,4 +430,37 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const projectFlow = {
+  title: "Project Flow",
+  summary: "Visual Project Planning for Fullstack Developers",
+  publishedAt: "2024-04-08",
+  images: [
+    <Image src="/images/projects/project-flow/pf-overview.png" />,
+    <Image src="/images/projects/project-flow/pf-overview2.png" />,
+    <Image src="/images/projects/project-flow/pf-login.png" />,
+    <Image src="/images/projects/project-flow/pf-register.png" />,
+    <Image src="/images/projects/project-flow/pf-landing.png" />,
+    <Image src="/images/projects/project-flow/pf-dia.png" />,
+    <Image src="/images/projects/project-flow/pf-db-dia.png" />,
+    <Image src="/images/projects/project-flow/pf-api.png" />,
+    <Image src="/images/projects/project-flow/pf-c4.png" />,
+    <Image src="/images/projects/project-flow/pf-timelinelarge.png" />,
+  ],
+  video: [
+    <MediaPlayer src="/videos/projects/project-flow/pf-overview.mp4" />,
+    <MediaPlayer src="/videos/projects/project-flow/database-diagram.mp4" />,
+    <MediaPlayer src="/videos/projects/project-flow/pf-api.mp4" />,
+  ],
+};
+
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+  projectFlow,
+};

@@ -1,0 +1,24 @@
+/* Apply transition to all elements when theme changes */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Disable transitions for specific elements if needed */
+.no-theme-transition {
+  transition: none !important;
+}
+
+/* Disable transitions for fixed position elements and popups */
+iframe,
+video,
+.fixed-position,
+[data-popper-placement] {
+  transition: none !important;
+}
+
+/* Apply smooth transition specifically for theme toggle */
+.theme-toggle-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}

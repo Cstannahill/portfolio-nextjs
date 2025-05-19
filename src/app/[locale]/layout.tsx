@@ -1,8 +1,11 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
+import "@/styles/project-enhancements.css"; // Add our custom styles
+import "@/app/globals.css"; // Import globals.css for Tailwind
+import "@/app/globals-readme.css"; // Import styles for README markdown
 
 import classNames from "classnames";
-
+import { Analytics } from "@vercel/analytics/next";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 
@@ -142,7 +145,10 @@ export default async function RootLayout({
             flex={1}
           >
             <Flex justifyContent="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
+              <RouteGuard>
+                {children}
+                <Analytics />
+              </RouteGuard>
             </Flex>
           </Flex>
           <Footer />

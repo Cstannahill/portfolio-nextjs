@@ -14,7 +14,9 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
-
+import { getFeaturedProjects } from "@/lib/projects";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { ProjectCarousel } from "@/components/ProjectCarousel";
 export async function generateMetadata({
   params,
 }: {
@@ -60,11 +62,19 @@ export default async function About({
   unstable_setRequestLocale(locale);
   const t = getTranslations("about");
   const { person, about, social } = renderContent(t);
+
+  // Get featured projects
+  const featuredProjects = await getFeaturedProjects(locale);
   const structure = [
     {
       title: about.intro.title,
       display: about.intro.display,
       items: [],
+    },
+    {
+      title: "Featured Projects",
+      display: featuredProjects.length > 0,
+      items: featuredProjects.map((project) => project.title),
     },
     {
       title: about.work.title,
@@ -82,6 +92,7 @@ export default async function About({
       items: about.technical.skills.map((skill) => skill.title),
     },
   ];
+
   return (
     <Flex fillWidth maxWidth="m" direction="column">
       <script
@@ -233,6 +244,30 @@ export default async function About({
             >
               {about.intro.description}
             </Flex>
+          )}
+
+          {/* Featured Projects Section with Carousel */}
+          {featuredProjects.length > 0 && (
+            <>
+              <Heading
+                as="h2"
+                id="Featured Projects"
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                Featured Projects
+              </Heading>
+              <Flex direction="column" fillWidth gap="l" marginBottom="40">
+                {/* Project Carousel for highlighted projects */}
+                <ProjectCarousel
+                  projects={featuredProjects.slice(0, 3)}
+                  locale={locale}
+                />
+
+                {/* Grid display of projects */}
+                <FeaturedProjects projects={featuredProjects} locale={locale} />
+              </Flex>
+            </>
           )}
 
           {about.work.display && (
