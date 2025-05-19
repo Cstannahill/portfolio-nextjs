@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import { imageMap } from "@/lib/images"; // 👈 Add your actual image map here
+import { ImageFromMap } from "@/components/ImageFromMap";
+import { ImageKey } from "@/lib/images";
 interface FeatureItemProps {
   title: string;
   description: string;
@@ -23,7 +25,7 @@ export function FeatureItem({
 }: FeatureItemProps) {
   const statusClasses = {
     implemented: "text-green-400 dark:text-green-400",
-    "in-progress": "text-blue-4000 dark:text-blue-400",
+    "in-progress": "text-blue-400 dark:text-blue-400",
     planned: "text-amber-400 dark:text-amber-400",
   };
 
@@ -65,7 +67,7 @@ export function FeatureItem({
 interface FeatureGroupProps {
   title: string;
   features: FeatureItemProps[];
-  image?: string;
+  image?: ImageKey;
   className?: string;
 }
 
@@ -127,16 +129,27 @@ export function ProjectFeatureShowcase({
                   ))}
                 </ul>
               </div>
-              {group.image && (
-                <div className="relative h-60 md:h-auto rounded-md overflow-hidden border border-border">
-                  <Image
-                    src={group.image}
-                    alt={`${group.title} features`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
+
+              {group.image &&
+                (typeof group.image === "string" && group.image in imageMap ? (
+                  <div className="relative h-60 md:h-auto rounded-md overflow-hidden border border-border">
+                    <ImageFromMap
+                      name={group.image as keyof typeof imageMap}
+                      alt={`${group.title} features`}
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative h-60 md:h-auto rounded-md overflow-hidden border border-border">
+                    <Image
+                      src={group.image}
+                      alt={`${group.title} features`}
+                      className="object-cover"
+                      fill
+                      unoptimized
+                    />
+                  </div>
+                ))}
             </div>
           </TabsContent>
         ))}

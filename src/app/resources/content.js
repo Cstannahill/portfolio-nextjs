@@ -1,7 +1,3 @@
-import MediaPlayer from "@/components/media/MediaPlayer";
-import { InlineCode } from "@/once-ui/components";
-import Image from "next/image";
-
 const person = {
   firstName: "Christian",
   lastName: "Tannahill",
@@ -24,7 +20,6 @@ const newsletter = {
     </>
   ),
 };
-
 const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
@@ -50,9 +45,28 @@ const social = [
   },
 ];
 
-const home = {
-  label: "Home",
-  title: `${person.name}'s Portfolio`,
+const readme = {
+  title: "Readme",
+  label: "Readme",
+  image: "/images/og/home.jpg",
+  path: "/readme",
+  ogPath: "",
+  description: `${person?.name}'s GitHub Style Readme`,
+  headline: <>Hello, I'm {person.firstName}!</>,
+  subline: (
+    <>
+      I'm a full stack software engineer with a passion for creating
+      user-friendly applications. I love to learn and share my knowledge with
+      others.
+    </>
+  ),
+};
+
+const about = {
+  label: "About",
+  title: `${person.name}'s About`,
+  image: "/images/og/home.jpg",
+  path: "/about",
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Full Stack Software Engineer</>,
   subline: (
@@ -64,10 +78,24 @@ const home = {
   ),
 };
 
-const about = {
-  label: "About",
-  title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+const home = {
+  label: "Home",
+  title: `${person.name}'s Portfolio`,
+  path: "/",
+  image: "/images/og/home.jpg",
+  description: `Portfolio website showcasing my work as a ${person.role}`,
+
+  headline: <>Full‑Stack&nbsp;Software&nbsp;Engineer</>,
+  subline: (
+    <>
+      I craft intuitive UIs &amp; robust APIs, turning ideas into polished
+      products.
+    </>
+  ),
+  featured: {
+    title: "Now hiring – freelance work available",
+    href: "/work",
+  },
   tableOfContent: {
     display: true,
     subItems: false,
@@ -127,14 +155,14 @@ const about = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/hsk/1.png",
+            src: "/images/projects/hsk/1.avif",
             alt: "Once UI Project",
             key: "hskp-dash-view",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/hsk/2.png",
+            src: "/images/projects/hsk/2.avif",
             alt: "Once UI Project",
             key: "hsk-dash-no-task",
             width: 16,
@@ -200,14 +228,14 @@ const about = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/carte/carte-analytics.png",
+            src: "/images/projects/carte/1.png",
             key: "carte-analytics",
             alt: "Once UI Project",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/carte-pie.png",
+            src: "/images/projects/carte/2.png",
 
             key: "carte-pie",
             alt: "Once UI Project",
@@ -215,14 +243,13 @@ const about = {
             height: 9,
           },
           {
-            src: "/images/projects/carte/menu-view.png",
-            key: "carte-menu-view",
+            src: "/images/projects/carte/7.png",
             alt: "Once UI Project",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/CarteTables.png",
+            src: "/images/projects/carte/5.png",
             key: "carte-tables",
             alt: "Once UI Project",
             width: 16,
@@ -270,14 +297,14 @@ const about = {
         ),
         images: [
           {
-            src: "/images/projects/carte/carte-analytics.png",
+            src: "/images/projects/carte/1.png",
             key: "carte-analytics",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/carte-pie.png",
+            src: "/images/projects/carte/3.png",
             key: "carte-pie",
             alt: "Project image",
             width: 16,
@@ -312,14 +339,6 @@ const about = {
             real-time applications.
           </>
         ),
-        images: [
-          // {
-          //   src: "/images/projects/project-01/cover-04.jpg",
-          //   alt: "Project image",
-          //   width: 16,
-          //   height: 9,
-          // },
-        ],
       },
       {
         title: "SQL",
@@ -335,28 +354,28 @@ const about = {
         ),
         images: [
           {
-            src: "/images/projects/carte/CarteTables.png",
+            src: "/images/projects/carte/5.png",
             key: "carte-tables",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/Menu.png",
+            src: "/images/projects/carte/9.png",
             key: "carte-menu",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/sql-query.png",
+            src: "/images/projects/carte/7.png",
             key: "carte-sql-query",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/carte/sql-query2.png",
+            src: "/images/projects/carte/8.png",
             key: "carte-sql-query2",
             alt: "Project image",
             width: 16,
@@ -369,9 +388,11 @@ const about = {
 };
 
 const blog = {
-  label: "More",
+  label: "Thoughts and Ideas",
   title: "More about me",
   description: `Read what ${person.name} has been up to recently`,
+  path: "/blog",
+
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -380,171 +401,21 @@ const work = {
   label: "Work",
   title: "My projects",
   description: `Design and dev projects by ${person.name}`,
+  path: "/work",
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
-const projects = [
-  {
-    title: "Project Flow",
-    key: "project-flow",
-    slug: "project-flow",
-    description: (
-      <>
-        Project Flow is a visual project planning tool designed for full-stack
-        developers. It provides an intuitive interface for creating and managing
-        project timelines, tasks, and resources, enabling teams to streamline
-        their workflow and enhance collaboration.
-      </>
-    ),
-    images: [
-      <Image
-        key="pf-overview"
-        src="/images/projects/project-flow/pf-overview.png"
-      />,
-      <Image
-        key="pf-overview2"
-        src="/images/projects/project-flow/pf-overview2.png"
-      />,
-    ],
-    date: "2024-04-08",
-    technologies: ["ReactJS", ".NET", "SQL", "NextJS", "TailwindCSS", "Redux"],
-  },
-];
 const gallery = {
-  label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
-  // Images from https://pexels.com
-  images: [
-    {
-      src: "/images/gallery/img-01.jpg",
-      key: "gallery-img-01",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-02.jpg",
-      key: "gallery-img-02",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-03.jpg",
-      key: "gallery-img-03",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-04.jpg",
-      key: "gallery-img-04",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-05.jpg",
-      key: "gallery-img-05",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-06.jpg",
-      key: "gallery-img-06",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-07.jpg",
-      key: "gallery-img-07",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-08.jpg",
-      key: "gallery-img-08",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-09.jpg",
-      key: "gallery-img-09",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-10.jpg",
-      key: "gallery-img-10",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-11.jpg",
-      key: "gallery-img-11",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-12.jpg",
-      key: "gallery-img-12",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-13.jpg",
-      key: "gallery-img-13",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-14.jpg",
-      key: "gallery-img-14",
-      alt: "image",
-      orientation: "horizontal",
-    },
-  ],
-};
+  title: "My Gallery",
+  description: "Curated showcase of photography and art",
 
-const projectFlow = {
-  title: "Project Flow",
-  summary: "Visual Project Planning for Fullstack Developers",
-  publishedAt: "2024-04-08",
   images: [
-    <Image
-      key="pf-overview"
-      src="/images/projects/project-flow/pf-overview.png"
-    />,
-    <Image
-      key="pf-overview2"
-      src="/images/projects/project-flow/pf-overview2.png"
-    />,
-    <Image key="pf-login" src="/images/projects/project-flow/pf-login.png" />,
-    <Image
-      key="pf-register"
-      src="/images/projects/project-flow/pf-register.png"
-    />,
-    <Image
-      key="pf-landing"
-      src="/images/projects/project-flow/pf-landing.png"
-    />,
-    <Image key="pf-dia" src="/images/projects/project-flow/pf-dia.png" />,
-    <Image key="pf-db-dia" src="/images/projects/project-flow/pf-db-dia.png" />,
-    <Image key="pf-api" src="/images/projects/project-flow/pf-api.png" />,
-    <Image key="pf-c4" src="/images/projects/project-flow/pf-c4.png" />,
-    <Image
-      key="pf-timelinelarge"
-      src="/images/projects/project-flow/pf-timelinelarge.png"
-    />,
-  ],
-  video: [
-    <MediaPlayer
-      key="pf-overview"
-      src="/videos/projects/project-flow/pf-overview.mp4"
-    />,
-    <MediaPlayer
-      key="pf-db-dia"
-      src="/videos/projects/project-flow/database-diagram.mp4"
-    />,
-    <MediaPlayer key="pf-api" src="/videos/projects/project-flow/pf-api.mp4" />,
+    {
+      src: "/images/projects/stui/1.png ",
+      alt: "Project image",
+      orientation: "horizontal",
+    },
   ],
 };
 
@@ -557,5 +428,6 @@ export {
   blog,
   work,
   gallery,
-  projectFlow,
+  readme,
+  // projectFlow,
 };

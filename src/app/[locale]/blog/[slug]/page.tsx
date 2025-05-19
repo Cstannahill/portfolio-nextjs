@@ -1,124 +1,83 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { Avatar, Button, Flex, Heading, Text } from "@/once-ui/components";
-
-import { baseURL, renderContent } from "@/app/resources";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
+import {
+  Avatar,
+  AvatarGroup,
+  Button,
+  Column,
+  Flex,
+  Heading,
+  Icon,
+  Row,
+  Text,
+} from "@/once-ui/components";
+import { about, blog, person, baseURL } from "@/app/resources";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { formatDate } from "@/app/utils/formatDate";
+import ScrollToHash from "@/components/ScrollToHash";
+import { Metadata } from "next";
+import { Meta, Schema } from "@/once-ui/modules";
+import { HeadingNav } from "@/once-ui/components/HeavingNav";
 
-interface BlogParams {
-  slug: string;
-  locale: string;
-}
-
-export async function generateStaticParams() {
-  const locales = routing.locales;
-  const allPosts: BlogParams[] = [];
-
-  // Fetch posts for each locale
-  for (const locale of locales) {
-    const posts = getPosts(["src", "app", "[locale]", "blog", "posts", locale]);
-    allPosts.push(...posts.map((post) => ({ slug: post.slug, locale })));
-  }
-
-  return allPosts;
+export async function generateStaticParams({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return getAllPosts(locale).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: BlogParams;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug, locale } = params;
-  const post = getPosts([
-    "src",
-    "app",
-    "[locale]",
-    "blog",
-    "posts",
-    locale,
-  ]).find((post) => post.slug === slug);
+  const { slug, locale } = await params;
+  const post = getPostBySlug(slug, locale);
+  if (!post) return {};
 
-  if (!post) {
-    return;
-  }
-
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  const ogImage = image
-    ? `https://${baseURL}${image}`
-    : `https://${baseURL}/og?title=${title}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime,
-      url: `https://${baseURL}/${locale}/blog/${post.slug}`,
-      images: [{ url: ogImage }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  return Meta.generate({
+    title: post.metadata.title,
+    description: post.metadata.summary,
+    baseURL,
+    image:
+      post.metadata.image ??
+      `${baseURL}/og?title=${encodeURIComponent(post.metadata.title)}`,
+    path: `${blog.path}/${post.slug}`,
+  });
 }
 
-export default async function Blog({
+export default async function BlogPage({
   params,
 }: {
-  params: BlogParams;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug, locale } = params;
-  unstable_setRequestLocale(locale);
-
-  const posts = getPosts(["src", "app", "[locale]", "blog", "posts", locale]);
-  const post = posts.find((post) => post.slug === slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  const t = await getTranslations("blog");
-  const { person } = renderContent(t);
+  const { slug, locale } = await params;
+  const post = getPostBySlug(slug, locale);
+  if (!post) notFound();
 
   return (
     <Flex as="section" fillWidth maxWidth="xs" direction="column" gap="m">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://${baseURL}${post.metadata.image}`
-              : `https://${baseURL}/og?title=${post.metadata.title}`,
-            url: `https://${baseURL}/${locale}/blog/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-            },
-          }),
+      <Schema
+        as="blogPosting"
+        baseURL={baseURL}
+        path={`${blog.path}/${post.slug}`}
+        title={post.metadata.title}
+        description={post.metadata.summary}
+        datePublished={post.metadata.publishedAt}
+        dateModified={post.metadata.publishedAt}
+        image={`${baseURL}/og?title=${encodeURIComponent(post.metadata.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}${about.path}`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
       <Button
-        href={`/${locale}/blog`}
+        data-border="rounded"
+        href="/blog"
         variant="tertiary"
         size="s"
         prefixIcon="chevronLeft"

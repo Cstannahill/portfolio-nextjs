@@ -1,87 +1,45 @@
 import { Flex, Heading } from "@/once-ui/components";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { baseURL, renderContent } from "@/app/resources";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { baseURL } from "@/app/resources";
+import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations();
-  const { blog } = renderContent(t);
-
-  const title = blog.title;
-  const description = blog.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/${locale}/blog`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+import { Meta, Schema } from "@/once-ui/modules";
+import { blog, person, newsletter } from "@/app/resources";
+export async function generateMetadata() {
+  return Meta.generate({
+    title: blog.title,
+    description: blog.description,
+    baseURL: baseURL,
+    image: `${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
+    path: blog.path,
+  });
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  unstable_setRequestLocale(locale);
-
+export default async function Blog() {
   const t = getTranslations("blog");
-  const { person, blog, newsletter } = renderContent(t);
+
   return (
     <Flex fillWidth maxWidth="s" direction="column">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            headline: blog.title,
-            description: blog.description,
-            url: `https://${baseURL}/blog`,
-            image: `${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-              image: {
-                "@type": "ImageObject",
-                url: `${baseURL}${person.avatar}`,
-              },
-            },
-          }),
+      <Schema
+        as="blog"
+        baseURL={baseURL}
+        title={blog.title}
+        description={blog.description}
+        path={blog.path}
+        image={`${baseURL}/og?title=${encodeURIComponent(blog.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}/blog`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
       <Heading marginBottom="l" variant="display-strong-s">
         {blog.title}
       </Heading>
       <Flex fillWidth flex={1} direction="column">
-        <Posts range={[1, 3]} locale={locale} thumbnail />
-        <Posts range={[4]} columns="2" locale={locale} />
+        <Posts range={[1, 3]} thumbnail />
+        <Posts range={[4]} columns="2" />
       </Flex>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Flex>

@@ -95,7 +95,7 @@ export function ProjectCard({
 
   return (
     <Link href={linkUrl} className="block group w-full">
-      <Card className="h-full overflow-hidden transition-all hover:border-primary">
+      <Card className="h-full border-zince-300 shadow-xl overflow-hidden transition-all hover:border-primary">
         {formattedImages.length > 0 && (
           <div
             className="relative aspect-video overflow-hidden"

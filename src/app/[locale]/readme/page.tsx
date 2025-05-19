@@ -1,14 +1,30 @@
-"use client";
+import { Flex, Heading, SmartImage, SmartLink } from "@/once-ui/components";
+import { Meta } from "@/once-ui/modules";
+import { baseURL } from "@/app/resources";
+import { readme, person } from "@/app/resources/content";
+import { routing } from "@/i18n/routing";
+import type { Locale } from "@/i18n/types";
+import { Link } from "@/i18n/navigation";
 
-import React, { useEffect, useState } from "react";
-import { Flex, Heading, SmartImage } from "@/once-ui/components";
+type PageParams = { params: Promise<{ locale: Locale }> };
+
+export async function generateMetadata({ params }: PageParams) {
+  const { locale } = await params;
+  const { defaultLocale, locales } = routing;
+
+  if (!locales.includes(locale)) return; // ✅  clearer bail‑out
+
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
+
+  return Meta.generate({
+    title: readme.title,
+    description: readme.description,
+    baseURL: `${baseURL}${prefix}`,
+    path: readme.path, // '/readme'
+  });
+}
 
 export default function ReadmePage() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
   return (
     <Flex
       fillWidth
@@ -17,205 +33,221 @@ export default function ReadmePage() {
       gap="xl"
       className="text-center"
     >
-      <Heading variant="display-strong-l" marginBottom="m">
-        GitHub README
-      </Heading>
+      {/* ───── title row ───── */}
+      <div className="flex items-center mb-4">
+        {/* Heading takes all available width and centers its own text */}
+        <Heading
+          variant="display-strong-m"
+          marginBottom="m"
+          className="flex-1 text-center"
+        >
+          GitHub&nbsp;README
+        </Heading>
 
-      {isClient && (
-        <div className="prose dark:prose-invert max-w-none">
-          <div className="markdown-body">
-            {/* 👋 Hi, I'm Christian — Full‑Stack Developer & Relentless Problem‑Solver */}
-            <h1>
-              👋 Hi, I'm Christian — Full‑Stack Developer & Relentless
-              Problem‑Solver
-            </h1>
-            <p>
-              Illinois-based software engineer with a passion for building
-              practical, well‑designed solutions that push me to learn something
-              new every day.
-              <br />I thrive on <strong>TypeScript</strong>,{" "}
-              <strong>React/Next.js</strong>, and <strong>.NET</strong>, but I'm
-              equally at home experimenting with <strong>AI</strong>,{" "}
-              <strong>DevOps</strong>, and <strong>blockchain</strong>.
-              <br />
-              My goal: turn ideas into polished products while continuously
-              expanding my skill set.
-            </p>
-            <hr />
+        {/* Link is pushed to the far right */}
+        <SmartLink
+          href="https://github.com/cstannahill"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-auto whitespace-nowrap"
+        >
+          View&nbsp;on GitHub
+        </SmartLink>
+      </div>
+      <div className="prose dark:prose-invert max-w-none">
+        <div className="markdown-body">
+          {/* 👋 Hi, I'm Christian — Full‑Stack Developer & Relentless Problem‑Solver */}
+          <h1>
+            👋 Hi, I'm Christian — Full‑Stack Developer & Relentless
+            Problem‑Solver
+          </h1>
+          <p>
+            Illinois-based software engineer with a passion for building
+            practical, well‑designed solutions that push me to learn something
+            new every day.
+            <br />I thrive on <strong>TypeScript</strong>,{" "}
+            <strong>React/Next.js</strong>, and <strong>.NET</strong>, but I'm
+            equally at home experimenting with <strong>AI</strong>,{" "}
+            <strong>DevOps</strong>, and <strong>blockchain</strong>.
+            <br />
+            My goal: turn ideas into polished products while continuously
+            expanding my skill set.
+          </p>
+          <hr />
 
-            {/* 🚀 Core Strengths */}
-            <h2 className="text-center">🚀 Core Strengths</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th align="left">Area</th>
-                  <th align="left">Technologies & Tools</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>Front End</strong>
-                  </td>
-                  <td>
-                    React, Next.js (App Router), ShadCN UI, Tailwind CSS,
-                    HTML5/CSS3, Redux, Zustand, Context
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Back End / APIs</strong>
-                  </td>
-                  <td>
-                    ASP.NET Core, Node.js/Express, REST & WebSockets, ADO.NET,
-                    Entity Framework, Prisma
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Languages</strong>
-                  </td>
-                  <td>
-                    <strong>TypeScript</strong> (preferred), JavaScript, C#,
-                    Python
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Data & DevOps</strong>
-                  </td>
-                  <td>
-                    MSSQL, PostgreSQL, Docker, Azure (App Service, Container
-                    Instances), GitHub Actions
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Interests</strong>
-                  </td>
-                  <td>
-                    AI/ML (OpenAI, Ollama, Hugging Face), Blockchain
-                    (Synapse‑Chain), Dev Tools, Game Dev (Unity C#), Crypto &
-                    DeFi
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p>
-              I build fast, document thoroughly, and prioritize MVP-first
-              releases so projects deliver value early and evolve iteratively.
-            </p>
-            <hr />
+          {/* 🚀 Core Strengths */}
+          <h2 className="text-center">🚀 Core Strengths</h2>
+          <table>
+            <thead>
+              <tr>
+                <th align="left">Area</th>
+                <th align="left">Technologies & Tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Front End</strong>
+                </td>
+                <td>
+                  React, Next.js (App Router), ShadCN UI, Tailwind CSS,
+                  HTML5/CSS3, Redux, Zustand, Context
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Back End / APIs</strong>
+                </td>
+                <td>
+                  ASP.NET Core, Node.js/Express, REST & WebSockets, ADO.NET,
+                  Entity Framework, Prisma
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Languages</strong>
+                </td>
+                <td>
+                  <strong>TypeScript</strong> (preferred), JavaScript, C#,
+                  Python
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Data & DevOps</strong>
+                </td>
+                <td>
+                  MSSQL, PostgreSQL, Docker, Azure (App Service, Container
+                  Instances), GitHub Actions
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Interests</strong>
+                </td>
+                <td>
+                  AI/ML (OpenAI, Ollama, Hugging Face), Blockchain
+                  (Synapse‑Chain), Dev Tools, Game Dev (Unity C#), Crypto & DeFi
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            I build fast, document thoroughly, and prioritize MVP-first releases
+            so projects deliver value early and evolve iteratively.
+          </p>
+          <hr />
 
-            {/* 💻 Technologies I Love Working With */}
-            <h2 className="text-center">💻 Technologies I Love Working With</h2>
-            <div className="flex flex-wrap gap-2 justify-center mb-6">
-              <img
-                src="https://img.shields.io/badge/TypeScript-3178C6?style=plastic&logo=typescript&logoColor=white"
-                height="25"
-                alt="TypeScript"
-              />
-              <img
-                src="https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=javascript&logoColor=black"
-                height="25"
-                alt="JavaScript"
-              />
-              <img
-                src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=FFD43B&style=plastic"
-                height="25"
-                alt="Python"
-              />
-              <img
-                src="https://img.shields.io/badge/React-222222?style=plastic&logo=react&logoColor=62d9fb"
-                alt="React"
-                height="25"
-              />
-              <img
-                src="https://img.shields.io/badge/Next.js-000000?style=plastic&logo=nextdotjs&logoColor=white"
-                height="25"
-                alt="Next.js"
-              />
-              <img
-                src="https://img.shields.io/badge/Dotnet-512BD4?style=plastic&logo=dotnet&logoColor=white"
-                height="25"
-                alt=".NET"
-              />
-              <img
-                src="https://img.shields.io/badge/SQL-336791?style=plastic&logo=postgresql&logoColor=white"
-                height="25"
-                alt="SQL"
-              />
-              <img
-                src="https://img.shields.io/badge/Prisma-2D3748?style=plastic&logo=prisma&logoColor=white"
-                height="25"
-                alt="Prisma"
-              />
-              <img
-                src="https://img.shields.io/badge/OpenAI-412991?style=plastic&logo=openai&logoColor=white"
-                height="25"
-                alt="OpenAI"
-              />
-              <img
-                src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=plastic&logo=tailwindcss&logoColor=white"
-                height="25"
-                alt="Tailwind CSS"
-              />
-              <img
-                src="https://img.shields.io/badge/Redux-ffffff?style=plastic&logo=redux&logoColor=764ABC"
-                height="25"
-                alt="Redux"
-              />
-            </div>
+          {/* 💻 Technologies I Love Working With */}
+          <h2 className="text-center">💻 Technologies I Love Working With</h2>
+          <div className="flex flex-wrap gap-2 justify-center mb-6">
+            <img
+              src="https://img.shields.io/badge/TypeScript-3178C6?style=plastic&logo=typescript&logoColor=white"
+              height="25"
+              alt="TypeScript"
+            />
+            <img
+              src="https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=javascript&logoColor=black"
+              height="25"
+              alt="JavaScript"
+            />
+            <img
+              src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=FFD43B&style=plastic"
+              height="25"
+              alt="Python"
+            />
+            <img
+              src="https://img.shields.io/badge/React-222222?style=plastic&logo=react&logoColor=62d9fb"
+              alt="React"
+              height="25"
+            />
+            <img
+              src="https://img.shields.io/badge/Next.js-000000?style=plastic&logo=nextdotjs&logoColor=white"
+              height="25"
+              alt="Next.js"
+            />
+            <img
+              src="https://img.shields.io/badge/Dotnet-512BD4?style=plastic&logo=dotnet&logoColor=white"
+              height="25"
+              alt=".NET"
+            />
+            <img
+              src="https://img.shields.io/badge/SQL-336791?style=plastic&logo=postgresql&logoColor=white"
+              height="25"
+              alt="SQL"
+            />
+            <img
+              src="https://img.shields.io/badge/Prisma-2D3748?style=plastic&logo=prisma&logoColor=white"
+              height="25"
+              alt="Prisma"
+            />
+            <img
+              src="https://img.shields.io/badge/OpenAI-412991?style=plastic&logo=openai&logoColor=white"
+              height="25"
+              alt="OpenAI"
+            />
+            <img
+              src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=plastic&logo=tailwindcss&logoColor=white"
+              height="25"
+              alt="Tailwind CSS"
+            />
+            <img
+              src="https://img.shields.io/badge/Redux-ffffff?style=plastic&logo=redux&logoColor=764ABC"
+              height="25"
+              alt="Redux"
+            />
+          </div>
 
-            {/* 🧠 Currently Learning / Exploring */}
-            <h2 className="text-center">🧠 Currently Learning / Exploring</h2>
-            <div className="flex flex-wrap gap-2 justify-center mb-6">
-              <img
-                src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"
-                height="25"
-                alt="Docker"
-              />
-              <img
-                src="https://img.shields.io/badge/Blazor-512BD4?style=plastic&logo=blazor&logoColor=white"
-                height="25"
-                alt="Blazor"
-              />
-              <img
-                src="https://img.shields.io/badge/C++-00599C?style=plastic&logo=c%2B%2B&logoColor=white"
-                height="25"
-                alt="C++"
-              />
-              <img
-                src="https://img.shields.io/badge/Blockchain-121212?style=plastic&logo=bitcoin&logoColor=orange"
-                height="25"
-                alt="Blockchain"
-              />
-              <img
-                src="https://img.shields.io/badge/Ollama-ffffff?style=plastic&logo=ollama&logoColor=000000"
-                height="25"
-                alt="Ollama"
-              />
-              <img
-                src="https://img.shields.io/badge/Anthropic-1A1A1A?style=plastic&logo=anthropic&logoColor=white"
-                height="25"
-                alt="Anthropic"
-              />
-              <img
-                src="https://img.shields.io/badge/LangChain-D4FF00?style=plastic&logo=langchain&logoColor=black"
-                height="25"
-                alt="LangChain"
-              />
-              <img
-                src="https://img.shields.io/badge/LangGraph-000000?style=plastic&logo=langgraph&logoColor=white"
-                height="25"
-                alt="LangGraph"
-              />
-            </div>
-            {/* Tech Explored*/}
-            <h2 className="text-center">⚙️ Tech Explored</h2>
-            <div className="flex justify-center justify-items-center mb-6">
-              <div className="align-text-center">
-                <table>
+          {/* 🧠 Currently Learning / Exploring */}
+          <h2 className="text-center">🧠 Currently Learning / Exploring</h2>
+          <div className="flex flex-wrap gap-2 justify-center mb-6">
+            <img
+              src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"
+              height="25"
+              alt="Docker"
+            />
+            <img
+              src="https://img.shields.io/badge/Blazor-512BD4?style=plastic&logo=blazor&logoColor=white"
+              height="25"
+              alt="Blazor"
+            />
+            <img
+              src="https://img.shields.io/badge/C++-00599C?style=plastic&logo=c%2B%2B&logoColor=white"
+              height="25"
+              alt="C++"
+            />
+            <img
+              src="https://img.shields.io/badge/Blockchain-121212?style=plastic&logo=bitcoin&logoColor=orange"
+              height="25"
+              alt="Blockchain"
+            />
+            <img
+              src="https://img.shields.io/badge/Ollama-ffffff?style=plastic&logo=ollama&logoColor=000000"
+              height="25"
+              alt="Ollama"
+            />
+            <img
+              src="https://img.shields.io/badge/Anthropic-1A1A1A?style=plastic&logo=anthropic&logoColor=white"
+              height="25"
+              alt="Anthropic"
+            />
+            <img
+              src="https://img.shields.io/badge/LangChain-D4FF00?style=plastic&logo=langchain&logoColor=black"
+              height="25"
+              alt="LangChain"
+            />
+            <img
+              src="https://img.shields.io/badge/LangGraph-000000?style=plastic&logo=langgraph&logoColor=white"
+              height="25"
+              alt="LangGraph"
+            />
+          </div>
+          {/* Tech Explored*/}
+          <h2 className="text-center">⚙️ Tech Explored</h2>
+          <div className="flex justify-center justify-items-center mb-6">
+            <div className="align-text-center">
+              <table>
+                <tbody>
                   <tr>
                     <td>
                       <img
@@ -480,125 +512,125 @@ export default function ReadmePage() {
                       />
                     </td>
                   </tr>
-                </table>
-              </div>
-            </div>
-
-            {/* Recent / Current Projects */}
-            <h2>Recent / Current Projects</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th align="left">Project</th>
-                  <th align="left">Tech Highlights</th>
-                  <th align="left">What It Does</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/portfolio-nextjs">
-                      <strong>portfolio-nextjs</strong>
-                    </a>
-                  </td>
-                  <td>Next.js 15, TypeScript, Tailwind, ShadCN</td>
-                  <td>
-                    Personal site & blog, built for speed and easy content
-                    updates.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/image-transformation-api">
-                      <strong>image-transformation-api</strong>
-                    </a>
-                  </td>
-                  <td>Docker, .NET Minimal API</td>
-                  <td>
-                    REST API that performs on‑the‑fly image edits (resize, crop,
-                    filters, convert).
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/ai-campfire-chat">
-                      <strong>ai-campfire-chat</strong>
-                    </a>
-                  </td>
-                  <td>Next.js, OpenAI, Prisma</td>
-                  <td>
-                    Cozy GPT-powered chat app for storytelling with friends.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/ctgen">
-                      <strong>ctgen</strong>
-                    </a>
-                  </td>
-                  <td>Node CLI, TypeScript, Inquirer</td>
-                  <td>
-                    CLI that generates and visualizes project folder structures.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/project-flow">
-                      <strong>project-flow</strong>
-                    </a>
-                  </td>
-                  <td>React, .NET API, Drag‑and‑Drop</td>
-                  <td>
-                    Visual project planner with real-time task and feature
-                    mapping.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://github.com/Cstannahill/synapse-blockchain">
-                      <strong>synapse-blockchain</strong>
-                    </a>
-                  </td>
-                  <td>Python, PoS prototype</td>
-                  <td>
-                    Early-stage blockchain for decentralized AI model
-                    marketplaces.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            {/* Metrics */}
-            <SmartImage
-              src="/images/metrics/github-metrics.svg"
-              alt="GitHub Metrics"
-              height={230}
-              objectFit="contain"
-              className="rounded-lg shadow-lg"
-            />
-            {/* 🤝 Let's Collaborate */}
-            <h2>🤝 Let's Collaborate</h2>
-            <p>I'm always keen to:</p>
-            <ul>
-              <li>
-                <strong>Pair on open‑source</strong> (especially TS/React
-                utilities, AI, DevOps pipelines, or .NET APIs)
-              </li>
-              <li>
-                <strong>Tinker with AI workflows</strong> (prompt engineering,
-                agents, local model hosting)
-              </li>
-              <li>
-                <strong>Explore Web3 ideas</strong> (smart contracts, dApps,
-                Layer‑2 experiments)
-              </li>
-            </ul>
-            <hr />
-            <div className="text-center">
-              <em>"Code boldly, refactor often, and never stop learning."</em>
+                </tbody>
+              </table>
             </div>
           </div>
+
+          {/* Recent / Current Projects */}
+          <h2>Recent / Current Projects</h2>
+          <table>
+            <thead>
+              <tr>
+                <th align="left">Project</th>
+                <th align="left">Tech Highlights</th>
+                <th align="left">What It Does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/portfolio-nextjs">
+                    <strong>portfolio-nextjs</strong>
+                  </a>
+                </td>
+                <td>Next.js 15, TypeScript, Tailwind, ShadCN</td>
+                <td>
+                  Personal site & blog, built for speed and easy content
+                  updates.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/image-transformation-api">
+                    <strong>image-transformation-api</strong>
+                  </a>
+                </td>
+                <td>Docker, .NET Minimal API</td>
+                <td>
+                  REST API that performs on‑the‑fly image edits (resize, crop,
+                  filters, convert).
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/ai-campfire-chat">
+                    <strong>ai-campfire-chat</strong>
+                  </a>
+                </td>
+                <td>Next.js, OpenAI, Prisma</td>
+                <td>
+                  Cozy GPT-powered chat app for storytelling with friends.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/ctgen">
+                    <strong>ctgen</strong>
+                  </a>
+                </td>
+                <td>Node CLI, TypeScript, Inquirer</td>
+                <td>
+                  CLI that generates and visualizes project folder structures.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/project-flow">
+                    <strong>project-flow</strong>
+                  </a>
+                </td>
+                <td>React, .NET API, Drag‑and‑Drop</td>
+                <td>
+                  Visual project planner with real-time task and feature
+                  mapping.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://github.com/Cstannahill/synapse-blockchain">
+                    <strong>synapse-blockchain</strong>
+                  </a>
+                </td>
+                <td>Python, PoS prototype</td>
+                <td>
+                  Early-stage blockchain for decentralized AI model
+                  marketplaces.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/* Metrics */}
+          <SmartImage
+            src="/images/metrics/github-metrics.svg"
+            alt="GitHub Metrics"
+            height={230}
+            objectFit="contain"
+            className="rounded-lg shadow-lg"
+          />
+          {/* 🤝 Let's Collaborate */}
+          <h2>🤝 Let's Collaborate</h2>
+          <p>I'm always keen to:</p>
+          <ul>
+            <li>
+              <strong>Pair on open‑source</strong> (especially TS/React
+              utilities, AI, DevOps pipelines, or .NET APIs)
+            </li>
+            <li>
+              <strong>Tinker with AI workflows</strong> (prompt engineering,
+              agents, local model hosting)
+            </li>
+            <li>
+              <strong>Explore Web3 ideas</strong> (smart contracts, dApps,
+              Layer‑2 experiments)
+            </li>
+          </ul>
+          <hr />
+          <div className="text-center">
+            <em>"Code boldly, refactor often, and never stop learning."</em>
+          </div>
         </div>
-      )}
+      </div>
     </Flex>
   );
 }

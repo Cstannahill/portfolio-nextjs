@@ -1,11 +1,19 @@
-const baseURL = "https://cstannahill-software-dev.vercel.app";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+
+const baseURL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
 
 // Enable localization
-const i18n = false;
+const i18n = true;
+const locales = ["en", "es"]; // A list of all locales that are supported, e.g. ['en','id']
 
 // Manage localized content in the messages folder
 const i18nOptions = {
-  locales: ["en"], // A list of all locales that are supported, e.g. ['en','id']
+  locales,
   defaultLocale: "en", // Locale used by default and as a fallback
 };
 
@@ -27,7 +35,7 @@ const effects = {
   mask: "cursor", // none | cursor | topLeft | topRight | bottomLeft | bottomRight
   gradient: {
     display: true,
-    opacity: 0.1, // 0 - 1
+    opacity: 0.25, // 0 - 1
   },
   dots: {
     display: false,
@@ -74,6 +82,16 @@ const mailchimp = {
   },
 };
 
+const primaryFont = GeistSans;
+
+const monoFont = GeistMono;
+
+const font = {
+  primary: primaryFont,
+  secondary: primaryFont,
+  tertiary: primaryFont,
+  code: monoFont,
+};
 export {
   routes,
   protectedRoutes,
@@ -84,4 +102,6 @@ export {
   baseURL,
   i18n,
   i18nOptions,
+  font,
+  locales,
 };

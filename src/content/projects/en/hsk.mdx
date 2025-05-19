@@ -1,0 +1,225 @@
+---
+title: "Housekeeping Management Application"
+publishedAt: "2024-05-08"
+summary: "The Housekeeping Management App is a real-time task tracking and management tool designed to streamline housekeeping operations. Built using ReactJS for the front end and a Node.js/Next.js backend with Firebase integration, the app enables staff to view and update apartment cleaning statuses instantly. Key features include a real-time dashboard, detailed task records, and role-based authentication to ensure secure access."
+technologies:
+  - "ReactJS"
+  - "Firebase"
+  - "Node.js"
+  - "Next.js"
+  - "Tailwind CSS"
+  - "Azure"
+images:
+  - "/images/projects/hsk/1.avif"
+  - "/images/projects/hsk/2.avif"
+  - "/images/projects/hsk/3.avif"
+---
+
+## 🧠 Overview
+
+The **Housekeeping Management Application** is a real-time task management tool built to streamline housekeeping operations for apartment complexes and similar facilities. The platform enables staff to track apartment cleaning statuses, view assigned tasks, and collaborate effectively through a centralized dashboard. Designed with scalability and ease of use in mind, the application supports real-time updates, secure role-based access, and comprehensive task management, improving operational transparency and efficiency.
+
+<ProjectTechStack
+  title="Technology Stack"
+  technologies={[
+    { name: "ReactJS", icon: "⚛️", role: "primary" },
+    { name: "Firebase", icon: "🔥", role: "primary" },
+    { name: "Node.js", icon: "🟢", role: "primary" },
+    { name: "Next.js", icon: "▲", role: "secondary" },
+    { name: "Tailwind CSS", icon: "🎨", role: "secondary" },
+    { name: "Azure", icon: "☁️", role: "tertiary" },
+  ]}
+>
+  This application leverages Firebase's real-time database capabilities with a
+  React frontend and Node.js backend, all deployed on Azure for reliable cloud
+  hosting.
+</ProjectTechStack>
+
+## ✨ Core Capabilities
+
+<ProjectFeatureShowcase
+  title="Key Features"
+  groups={[
+    {
+      title: "Real-Time Task Management",
+      image: "hsk2",
+      features: [
+        {
+          title: "Real-Time Task Tracking",
+          description:
+            "Instant visibility into completed and pending tasks across all apartments",
+          status: "implemented",
+        },
+        {
+          title: "Dynamic Task Management",
+          description:
+            "Update statuses, add notes, and manage cleaning priorities seamlessly",
+          status: "implemented",
+        },
+        {
+          title: "Task History",
+          description:
+            "Comprehensive logs of all cleaning activities and status changes",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "User Management",
+      image: "hskt1",
+      features: [
+        {
+          title: "Role-Based Access Control",
+          description:
+            "Secure authentication and authorization with appropriate access levels",
+          status: "implemented",
+        },
+        {
+          title: "Staff Assignment",
+          description:
+            "Assign specific staff members to tasks and track performance",
+          status: "implemented",
+        },
+        {
+          title: "Management Dashboard",
+          description:
+            "Overview of all operations with filtering and sorting capabilities",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "System Features",
+      image: "hsk3",
+      features: [
+        {
+          title: "Centralized Dashboard",
+          description:
+            "User-friendly interface displaying cleaning schedules and task details",
+          status: "implemented",
+        },
+        {
+          title: "Backend Integration",
+          description:
+            "Efficient data retrieval and updates through Node.js and Next.js APIs",
+          status: "implemented",
+        },
+        {
+          title: "Mobile Responsiveness",
+          description:
+            "Optimized for both desktop and mobile devices for on-the-go access",
+          status: "implemented",
+        },
+      ],
+    },
+  ]}
+/>
+
+## 🧱 Technical Implementation
+
+<ProjectMetrics
+  title="Project Metrics"
+  metrics={[
+    { label: "Data Sync Latency", value: "<500ms", icon: "⚡", progress: 95 },
+    { label: "Mobile Usability", value: "92/100", icon: "📱", progress: 92 },
+    { label: "User Adoption", value: "89%", icon: "👥", progress: 89 },
+    { label: "Task Visibility", value: "Real-time", icon: "👁️" },
+  ]}
+/>
+
+## 🛠️ Design Philosophy
+
+<ProjectChallengeCard
+  title="Real-Time Synchronization Challenge"
+  challenge="Ensure data integrity and real-time synchronization between multiple users while preventing conflicts and maintaining performance."
+  solution="Implemented Firebase Realtime Database with carefully structured data models and optimized queries. Created a robust conflict resolution system with timestamps and user identification."
+  impact="Achieved reliable real-time updates with sub-500ms latency, enabling seamless collaboration between staff members and management."
+  domain="Real-Time Systems"
+/>
+
+## 📈 Development Journey
+
+<ProjectTimeline
+  title="Project Progression"
+  items={[
+    {
+      date: "November 2023",
+      title: "Requirements Analysis",
+      description:
+        "Gathered detailed requirements from housekeeping staff and management",
+      status: "completed",
+    },
+    {
+      date: "December 2023",
+      title: "Database Architecture",
+      description:
+        "Designed Firebase data structure for optimal real-time performance",
+      status: "completed",
+    },
+    {
+      date: "January 2024",
+      title: "User Interface Design",
+      description: "Created intuitive UI mockups with stakeholder feedback",
+      status: "completed",
+    },
+    {
+      date: "February 2024",
+      title: "Frontend Development",
+      description: "Built React components and integrated with Firebase",
+      status: "completed",
+    },
+    {
+      date: "March 2024",
+      title: "Backend Implementation",
+      description: "Developed Node.js/Next.js APIs and authentication system",
+      status: "completed",
+    },
+    {
+      date: "April 2024",
+      title: "Testing & Deployment",
+      description: "Conducted user testing and deployed to Azure",
+      status: "completed",
+    },
+  ]}
+/>
+
+## 🚧 Challenges and Learnings
+
+<ProjectChallengeCard
+  title="User Experience Optimization"
+  challenge="Design an intuitive interface that accommodates both staff and management workflows with different levels of technical expertise."
+  solution="Employed user-centric design principles with extensive stakeholder feedback. Created role-specific views and simplified task management flows based on user research."
+  impact="Achieved 89% user adoption rate with minimal training required. Staff reported significant time savings and reduced miscommunications."
+  difficulty="medium"
+  domain="UX Design"
+/>
+
+## 🔗 Outcome and Impact
+
+<ProjectMetrics
+  title="Business Impact"
+  metrics={[
+    {
+      label: "Operational Efficiency",
+      value: "+35%",
+      icon: "📈",
+      progress: 75,
+    },
+    { label: "Communication Errors", value: "-70%", icon: "📉", progress: 30 },
+    { label: "Task Completion Time", value: "-25%", icon: "⏱️", progress: 75 },
+    { label: "Management Visibility", value: "+80%", icon: "👓", progress: 80 },
+  ]}
+/>
+
+<ProjectChallengeCard
+  title="Project Success"
+  challenge="Create a system that streamlines housekeeping operations by providing a transparent and collaborative platform for tracking and managing tasks."
+  solution="Developed a comprehensive real-time application with Firebase integration, role-based access control, and intuitive user interfaces tailored to different user needs."
+  impact="The application streamlined housekeeping operations by providing a transparent and collaborative platform for tracking and managing tasks. Real-time updates reduced miscommunications and redundancies, leading to improved operational efficiency and staff satisfaction."
+  domain="Operations Management"
+/>
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Kanban Task Management" slug="kanban-task-management" />
+  <ProjectCard title="Carte Food Ordering Platform" slug="carte" />
+</ComponentShowcase>

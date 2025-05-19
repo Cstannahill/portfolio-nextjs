@@ -1,23 +1,20 @@
 import { getPosts } from "@/app/utils/utils";
 import { Flex } from "@/once-ui/components";
-
+import { work, person } from "@/app/resources";
 import { ProjectCard } from "@/components";
+import { getProjectEntries } from "@/lib/content";
 
 interface ProjectsProps {
   range?: [number, number?];
   locale: string;
 }
-
-export function Projects({ range, locale }: ProjectsProps) {
-  let allProjects = getPosts([
-    "src",
-    "app",
-    "[locale]",
-    "work",
-    "projects",
-    locale,
-  ]);
-
+const avatars = [
+  {
+    src: person.avatar,
+  },
+];
+export async function Projects({ range, locale }: ProjectsProps) {
+  const allProjects = await getProjectEntries(locale);
   const sortedProjects = allProjects.sort((a, b) => {
     return (
       new Date(b.metadata.publishedAt).getTime() -
@@ -42,7 +39,9 @@ export function Projects({ range, locale }: ProjectsProps) {
           description={post.metadata.summary}
           content={post.content}
           avatars={
-            post.metadata.team?.map((member) => ({ src: member.avatar })) || []
+            post.metadata.team?.map((member: any) => ({
+              src: member.avatar,
+            })) || []
           }
         />
       ))}
