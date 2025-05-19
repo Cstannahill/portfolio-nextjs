@@ -1,4 +1,4 @@
-const baseURL = "demo.magic-portfolio.com";
+const baseURL = "https://cstannahill-software-dev.vercel.app/";
 
 // Enable localization
 const i18n = false;
