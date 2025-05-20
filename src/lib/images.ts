@@ -29,7 +29,7 @@ import echome from "@/assets/images/projects/ecommerce/home.png";
 import ecitems from "@/assets/images/projects/ecommerce/items.png";
 // hsk
 import hsk1 from "@/assets/images/projects/hsk/1.avif";
-import hsk2 from "@/assets/images/projects/hsk/2.avif";
+import hsk from "@/assets/images/projects/hsk/2.avif";
 import hsk3 from "@/assets/images/projects/hsk/3.avif";
 // image-transformation-api
 import it1 from "@/assets/images/projects/image-transformation-api/1.avif";
@@ -132,7 +132,7 @@ export const ecommerceImages = {
 };
 export const hskImages = {
   hsk1,
-  hsk2,
+  hsk,
   hsk3,
 };
 export const itImages = {

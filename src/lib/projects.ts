@@ -23,11 +23,11 @@ const DEFAULT_LOCALE: Locale = routing.defaultLocale ?? "en";
 // Projects that should be featured on the About page
 // You can adjust this list based on which projects you want to highlight
 const FEATURED_PROJECTS = [
-  "ai-campfire-chat",
+  "trivia-app",
   "project-flow",
   "ecommerce",
   "carte",
-  "hsk",
+  "shadyt-ui-demo",
   "ororo-desktop-ai-integration",
 ];
 
@@ -36,7 +36,11 @@ const FEATURED_PROJECTS = [
  */
 export const getProjects = cache(
   async (locale: Locale = DEFAULT_LOCALE): Promise<Project[]> => {
-    const projectsDir = path.join(process.cwd(), `src/content/projects/`);
+    const projectsDir = path.join(
+      process.cwd(),
+      `src/content/projects/`,
+      locale
+    );
 
     // Check if directory exists
     if (!fs.existsSync(projectsDir)) {
@@ -131,7 +135,7 @@ export const getProjects = cache(
 export const getFeaturedProjects = cache(
   async (locale: Locale = DEFAULT_LOCALE): Promise<Project[]> => {
     const projects = await getProjects(locale);
-
+    console.log("Featured projects:", projects);
     // Prefer projects explicitly marked `featured`; otherwise take the first 3
     const featured = projects.filter((p) => p.featured);
     return featured.length > 0 ? featured : projects.slice(0, 3);
