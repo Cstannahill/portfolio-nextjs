@@ -21,7 +21,7 @@ export type Project = {
 const EXCLUDED_PROJECTS = ["project-01"];
 const DEFAULT_LOCALE: Locale = routing.defaultLocale ?? "en";
 // Projects that should be featured on the About page
-// You can adjust this list based on which projects you want to highlight
+
 const FEATURED_PROJECTS = [
   "trivia-app",
   "project-flow",
