@@ -7,7 +7,10 @@ module.exports = {
 
   // Generates /sitemap.xml and /robots.txt during `postbuild`
   generateRobotsTxt: true,
-
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
   // Next‑intl adds /en, /es, etc. — expose them as <xhtml:link alternates>
   alternateRefs: [
     { hrefLang: "en", href: "https://cstannahill-software-dev.vercel.app/en" },

@@ -1,159 +1,69 @@
-import "@/once-ui/styles/index.scss";
-import "@/once-ui/tokens/index.scss";
-import "@/styles/project-enhancements.css"; // Add our custom styles
-import "@/app/globals.css"; // Import globals.css for Tailwind
-import "@/app/globals-readme.css"; // Import styles for README markdown
-
-import classNames from "classnames";
-import { Analytics } from "@vercel/analytics/next";
+// app/[locale]/layout.tsx
 import { Footer, Header, RouteGuard } from "@/components";
-import { baseURL, effects, style } from "@/app/resources";
-
-import { Inter } from "next/font/google";
-import { Source_Code_Pro } from "next/font/google";
-
-import { NextIntlClientProvider } from "next-intl";
 import {
-  getMessages,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
-
-import { routing } from "@/i18n/routing";
-import { renderContent } from "@/app/resources";
+  baseURL,
+  effects, // <‑‑ still needed for SEO
+  home,
+} from "@/app/resources";
 import { Background, Flex } from "@/once-ui/components";
+import { Meta } from "@/once-ui/modules";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations();
-  const { person, home } = await renderContent(t);
-
-  return {
-    metadataBase: new URL(`https://${baseURL}/${locale}`),
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { Analytics } from "@vercel/analytics/next";
+export async function generateMetadata() {
+  return Meta.generate({
     title: home.title,
     description: home.description,
-    openGraph: {
-      title: `${person.firstName}'s Portfolio`,
-      description: "Portfolio website showcasing my work.",
-      url: baseURL,
-      siteName: `${person.firstName}'s Portfolio`,
-      locale: "en_US",
-      type: "website",
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
-}
-
-const primary = Inter({
-  variable: "--font-primary",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-type FontConfig = {
-  variable: string;
-};
-
-/*
-	Replace with code for secondary and tertiary fonts
-	from https://once-ui.com/customize
-*/
-const secondary: FontConfig | undefined = undefined;
-const tertiary: FontConfig | undefined = undefined;
-/*
- */
-
-const code = Source_Code_Pro({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-interface RootLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string };
+    baseURL,
+    path: home.path,
+    image: home.image,
+  });
 }
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale },
-}: RootLayoutProps) {
-  unstable_setRequestLocale(locale);
-  const messages = await getMessages();
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  /* ─────  nothing renders <html> or <body> here ───── */
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider locale={locale}>
+      {/* top spacing that used to be before <Header /> */}
+      <Flex fillWidth minHeight="16" />
+
+      <Header />
+
       <Flex
-        as="html"
-        lang="en"
-        background="page"
-        data-neutral={style.neutral}
-        data-brand={style.brand}
-        data-accent={style.accent}
-        data-solid={style.solid}
-        data-solid-style={style.solidStyle}
-        data-theme={style.theme}
-        data-border={style.border}
-        data-surface={style.surface}
-        data-transition={style.transition}
-        className={classNames(
-          primary.variable,
-          secondary ? secondary.variable : "",
-          tertiary ? tertiary.variable : "",
-          code.variable
-        )}
+        zIndex={0}
+        fillWidth
+        paddingY="l"
+        paddingX="l"
+        justifyContent="center"
+        flex={1}
       >
-        <Flex
-          style={{ minHeight: "100vh" }}
-          as="body"
-          fillWidth
-          margin="0"
-          padding="0"
-          direction="column"
-        >
-          <Background
-            mask={effects.mask as any}
-            gradient={effects.gradient as any}
-            dots={effects.dots as any}
-            lines={effects.lines as any}
-          />
-          <Flex fillWidth minHeight="16"></Flex>
-          <Header />
-          <Flex
-            zIndex={0}
-            fillWidth
-            paddingY="l"
-            paddingX="l"
-            justifyContent="center"
-            flex={1}
-          >
-            <Flex justifyContent="center" fillWidth minHeight="0">
-              <RouteGuard>
-                {children}
-                <Analytics />
-              </RouteGuard>
-            </Flex>
-          </Flex>
-          <Footer />
+        <Flex justifyContent="center" fillWidth minHeight="0">
+          <RouteGuard>
+            {children}
+            <Analytics />
+          </RouteGuard>
         </Flex>
       </Flex>
+
+      <Footer />
     </NextIntlClientProvider>
   );
 }

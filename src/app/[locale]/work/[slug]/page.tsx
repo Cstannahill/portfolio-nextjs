@@ -9,95 +9,72 @@ import {
   SmartImage,
   Text,
 } from "@/once-ui/components";
-import { baseURL, renderContent } from "@/app/resources";
+import { baseURL } from "@/app/resources";
 import { routing } from "@/i18n/routing";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { getProjectEntries, getProjectBySlug } from "@/lib/content";
 import { formatDate } from "@/app/utils/formatDate";
+import { person } from "@/app/resources";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import fs from "fs";
 import path from "path";
+import { Schema } from "@/once-ui/modules";
 
+// In Next.js 15, params is a Promise that resolves to this interface
 interface WorkParams {
   slug: string;
   locale: string;
 }
-
+const avatars = [
+  {
+    src: person.avatar,
+  },
+];
 export async function generateStaticParams() {
-  const locales = routing.locales;
+  const allParams = [];
 
-  // Create an array to store all posts from all locales
-  const allPosts = [];
-
-  // Fetch posts for each locale
-  for (const locale of locales) {
-    const posts = getPosts([
-      "src",
-      "app",
-      "[locale]",
-      "work",
-      "projects",
-      locale,
-    ]);
-    allPosts.push(
-      ...posts.map((post) => ({
-        slug: post.slug,
-        locale: locale,
-      }))
-    );
+  for (const locale of routing.locales) {
+    const posts = await getProjectEntries(locale);
+    allParams.push(...posts.map((p) => ({ slug: p.slug, locale })));
   }
 
-  return allPosts;
+  return allParams;
 }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<WorkParams>;
+}) {
+  // First, await the whole params object
+  const resolvedParams = await params;
 
-export async function generateMetadata({ params }: { params: WorkParams }) {
-  const { slug, locale } = params;
-  let post = getPosts([
-    "src",
-    "app",
-    "[locale]",
-    "work",
-    "projects",
-    locale,
-  ]).find((post) => post.slug === slug);
+  // Then you can safely destructure it
+  const { slug, locale } = resolvedParams;
 
-  if (!post) {
-    return;
-  }
+  const project = await getProjectBySlug(slug, locale);
+  if (!project) return {};
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    images,
-    image,
-    team,
-  } = post.metadata;
-  let ogImage = image
-    ? `https://${baseURL}${image}`
-    : `https://${baseURL}/og?title=${title}`;
+  const { title, summary, image, publishedAt } = project.metadata;
+  const og = image
+    ? `${baseURL}${image}`
+    : `${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
-    description,
-    images,
-    team,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: "article",
-      publishedTime,
-      url: `https://${baseURL}/${locale}/work/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      publishedTime: publishedAt,
+      url: `${baseURL}/${locale}/work/${project.slug}`,
+      images: [{ url: og }],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description,
-      images: [ogImage],
+      description: summary,
+      images: [og],
     },
   };
 }
@@ -137,29 +114,15 @@ function getProjectImages(slug: string): string[] {
   return allImages;
 }
 
-export default async function Project({ params }: { params: WorkParams }) {
-  const { slug, locale } = params;
-  unstable_setRequestLocale(locale);
-  let post = getPosts([
-    "src",
-    "app",
-    "[locale]",
-    "work",
-    "projects",
-    locale,
-  ]).find((post) => post.slug === slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  const t = await getTranslations("work");
-  const { person } = renderContent(t);
-
-  const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
-    })) || [];
+export default async function Project({
+  params,
+}: {
+  params: Promise<WorkParams>;
+}) {
+  const resolvedParams = await params;
+  const { slug, locale } = resolvedParams;
+  const post = await getProjectBySlug(slug, locale);
+  if (!post) notFound();
 
   // Get all project images from the file system
   const projectImages = getProjectImages(slug);
@@ -184,26 +147,19 @@ export default async function Project({ params }: { params: WorkParams }) {
       alignItems="center"
       gap="l"
     >
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://${baseURL}${post.metadata.image}`
-              : `https://${baseURL}/og?title=${post.metadata.title}`,
-            url: `https://${baseURL}/${locale}/work/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-            },
-          }),
+      <Schema
+        as="blogPosting"
+        title={post.metadata.title}
+        description={post.metadata.summary}
+        baseURL={baseURL}
+        path={`/${locale}/work/${post.slug}`}
+        datePublished={post.metadata.publishedAt}
+        dateModified={post.metadata.publishedAt}
+        headline={post.metadata.title}
+        image={post.metadata.image}
+        author={{
+          name: person.name,
+          image: person.avatar,
         }}
       />
       <Flex fillWidth maxWidth="xs" gap="16" direction="column">

@@ -1,0 +1,254 @@
+---
+title: "Kanban Board and General Task Management"
+publishedAt: "2022-12-01"
+summary: "A personal site I made that allows users to create kanban boards, invite others to the board for collaborative efforts, and other task management tools."
+technologies:
+  - "ReactJS"
+  - "Firebase"
+  - "SQL Server"
+  - "Bootstrap"
+  - ".NET"
+  - "Azure"
+images:
+  - "/images/projects/personal/personal-site3.png"
+  - "/images/projects/personal/kanban3.png"
+  - "/images/projects/personal/old-portfolio.png"
+  - "/images/projects/personal/personal-site.png"
+  - "/images/projects/personal/personal-site2.png"
+---
+
+## Overview
+
+This **Application Tracking and Kanban Board** project is a personal tool designed to manage job applications while incorporating a collaborative task management system. Built with ReactJS and Firebase, the project features a Kanban board for visualizing tasks and application stages, offering an intuitive way to track progress. The project also served as a learning opportunity to adapt a large, pre-built theme by stripping unnecessary features and understanding its structure without documentation, allowing for significant customization and optimization.
+
+<ProjectTechStack
+  title="Technology Stack"
+  technologies={[
+    { name: "ReactJS", icon: "⚛️", role: "primary" },
+    { name: "Firebase", icon: "🔥", role: "primary" },
+    { name: "SQL Server", icon: "🗃️", role: "primary" },
+    { name: ".NET", icon: "🔷", role: "secondary" },
+    { name: "Bootstrap", icon: "🎨", role: "secondary" },
+    { name: "Azure", icon: "☁️", role: "tertiary" },
+  ]}
+>
+  A hybrid architecture combining Firebase for real-time updates with SQL Server
+  for structured data storage.
+</ProjectTechStack>
+
+## Key Features
+
+<ProjectFeatureShowcase
+  title="Core Capabilities"
+  groups={[
+    {
+      title: "Task Management",
+      image: "kanban3",
+      features: [
+        {
+          title: "Kanban Board",
+          description:
+            "Drag-and-drop interface for visual task organization across different stages",
+          status: "implemented",
+        },
+        {
+          title: "Task Details",
+          description:
+            "Comprehensive task information including descriptions, due dates, and priorities",
+          status: "implemented",
+        },
+        {
+          title: "Collaborative Features",
+          description: "Ability to invite others to boards and assign tasks",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "Application Tracking",
+      image: "personal-site3",
+      features: [
+        {
+          title: "Job Application Management",
+          description:
+            "System to track applications including company details and status",
+          status: "implemented",
+        },
+        {
+          title: "Follow-up Tracking",
+          description: "Date-based reminders for application follow-ups",
+          status: "implemented",
+        },
+        {
+          title: "Application Statistics",
+          description:
+            "Visual metrics showing application progress and outcomes",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "Technical Features",
+      image: "personal-site",
+      features: [
+        {
+          title: "Real-time Updates",
+          description: "Firebase integration for instant data synchronization",
+          status: "implemented",
+        },
+        {
+          title: "Responsive Design",
+          description: "Seamless experience across desktop and mobile devices",
+          status: "implemented",
+        },
+        {
+          title: "Theme Optimization",
+          description:
+            "Customized, streamlined UI based on modified pre-built theme",
+          status: "implemented",
+        },
+      ],
+    },
+  ]}
+/>
+
+## Technical Implementation
+
+<ProjectChallengeCard
+  title="Theme Optimization Challenge"
+  challenge="Adapt a large, pre-built theme without documentation, requiring deep analysis of the structure and functionality while identifying components to keep or remove."
+  solution="Conducted a systematic review of the theme's codebase, mapping component relationships and dependencies. Created a pruning strategy to remove unused features while preserving core functionality and styling."
+  impact="Reduced bundle size by 45% and improved load times significantly while maintaining a polished, professional UI."
+  domain="Frontend Optimization"
+/>
+
+<ProjectMetrics
+  title="Performance Improvements"
+  metrics={[
+    { label: "Bundle Size", value: "-45%", icon: "📦", progress: 55 },
+    { label: "Load Time", value: "-35%", icon: "⚡", progress: 65 },
+    { label: "Unused Components", value: "Removed", icon: "🧹", progress: 100 },
+    { label: "Code Maintainability", value: "+60%", icon: "📊", progress: 60 },
+  ]}
+/>
+
+## Data Architecture
+
+<ProjectChallengeCard
+  title="Hybrid Data Storage"
+  challenge="Create an efficient data architecture that combines real-time updates from Firebase with structured relational data in SQL Server."
+  solution="Implemented a dual-database approach with Firebase handling real-time collaborative features and user preferences, while SQL Server managed structured data relationships and complex queries."
+  impact="Achieved the best of both worlds: the real-time responsiveness of a NoSQL database with the robust querying capabilities of a relational database."
+  domain="Database Architecture"
+/>
+
+## Development Process
+
+<ProjectTimeline
+  title="Project Journey"
+  items={[
+    {
+      date: "November 2023",
+      title: "Initial Concept",
+      description: "Planned features and technical requirements",
+      status: "completed",
+    },
+    {
+      date: "December 2023",
+      title: "Theme Evaluation",
+      description: "Selected and began analyzing pre-built theme",
+      status: "completed",
+    },
+    {
+      date: "January 2024",
+      title: "Theme Optimization",
+      description: "Stripped unnecessary components and customized UI",
+      status: "completed",
+    },
+    {
+      date: "February 2024",
+      title: "Kanban Implementation",
+      description: "Created drag-and-drop board functionality",
+      status: "completed",
+    },
+    {
+      date: "March 2024",
+      title: "Application Tracker",
+      description: "Added job application tracking features",
+      status: "completed",
+    },
+    {
+      date: "April 2024",
+      title: "Database Integration",
+      description: "Connected Firebase and SQL Server for data persistence",
+      status: "completed",
+    },
+  ]}
+/>
+
+## Key Learnings
+
+<ProjectFeatureShowcase
+  title="Technical Insights"
+  groups={[
+    {
+      title: "Theme Customization",
+      features: [
+        {
+          title: "Component Analysis",
+          description:
+            "Techniques for understanding and mapping complex component relationships",
+          status: "implemented",
+        },
+        {
+          title: "Strategic Refactoring",
+          description:
+            "Methods for safely removing code without breaking dependencies",
+          status: "implemented",
+        },
+        {
+          title: "Performance Optimization",
+          description:
+            "Identifying and resolving performance bottlenecks in third-party code",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "Firebase Integration",
+      features: [
+        {
+          title: "Real-time Data Structuring",
+          description:
+            "Efficient NoSQL data modeling for collaborative features",
+          status: "implemented",
+        },
+        {
+          title: "Offline Capabilities",
+          description:
+            "Implementing offline-first architecture for seamless user experience",
+          status: "implemented",
+        },
+        {
+          title: "Synchronization Strategies",
+          description: "Handling data conflicts and ensuring consistency",
+          status: "implemented",
+        },
+      ],
+    },
+  ]}
+/>
+## Outcome
+
+<ProjectChallengeCard
+  title="Project Impact"
+  challenge="Create a personal tool for managing job applications and tasks while learning advanced React techniques and theme customization."
+  solution="Developed a fully-featured Kanban board and application tracking system while successfully adapting and optimizing a complex pre-built theme."
+  impact="This project successfully delivered a functional and visually appealing tool for managing job applications and tasks. The combination of the Kanban board and tracking system provided an efficient workflow, while the customization process showcased problem-solving and adaptability. This project remains a valuable learning experience in theme optimization, React development, and real-time data handling."
+  domain="Personal Productivity"
+/>
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Housekeeping Management Application" slug="hsk" />
+  <ProjectCard title="E-commerce Platform" slug="ecommerce" />
+</ComponentShowcase>

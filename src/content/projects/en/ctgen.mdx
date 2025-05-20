@@ -1,0 +1,243 @@
+---
+title: "CTGen"
+summary: "Cross-platform CLI for rapid Next.js and .NET project scaffolding."
+publishedAt: "2025-05-13"
+technologies:
+  - "TypeScript"
+  - "Node.js"
+  - "npm"
+  - "GitHub Actions"
+images:
+  - "/images/projects/ctgen/1.avif"
+---
+
+## 🧠 Overview
+
+**CTGen** is a developer productivity tool that automates the scaffolding of modern web and API projects. Supporting both Next.js (TypeScript) and .NET (C#), it generates directory structures, boilerplate code, configuration files, and even Docker/CI setups. CTGen is designed to help developers start new projects quickly, with best practices and sensible defaults out of the box.
+
+<ProjectTechStack
+  title="Technology Stack"
+  technologies={[
+    { name: "TypeScript", icon: "🔷", role: "primary" },
+    { name: "Node.js", icon: "🟢", role: "primary" },
+    { name: "npm", icon: "📦", role: "secondary" },
+    { name: "GitHub Actions", icon: "🔄", role: "secondary" },
+    { name: "C# Templates", icon: "🔷", role: "tertiary" },
+  ]}
+>
+  Built as a Node.js CLI using TypeScript for type safety and maintainability,
+  distributed via npm.
+</ProjectTechStack>
+## ✨ Core Capabilities
+<ProjectFeatureShowcase
+  title="Key Features"
+  groups={[
+    {
+      title: "Project Scaffolding",
+      image: "ctgen1",
+      features: [
+        {
+          title: "Next.js & .NET Support",
+          description: "Scaffold full-featured projects with a single command",
+          status: "implemented",
+        },
+        {
+          title: "App Directory Structure",
+          description: "Generates organized folders and config files",
+          status: "implemented",
+        },
+        {
+          title: "Database Setup",
+          description: "Optional Postgres setup and .env configuration",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "Developer Experience",
+      features: [
+        {
+          title: "API Boilerplate",
+          description:
+            "Creates layered solution structure and sample controllers",
+          status: "implemented",
+        },
+        {
+          title: "Testing & CI",
+          description: "Adds sample unit tests and GitHub Actions workflows",
+          status: "implemented",
+        },
+        {
+          title: "Docker Support",
+          description: "Generates Dockerfile and docker-compose.yml",
+          status: "implemented",
+        },
+      ],
+    },
+    {
+      title: "Usability Features",
+      features: [
+        {
+          title: "Interactive Mode",
+          description: "Guided prompts for customized project creation",
+          status: "implemented",
+        },
+        {
+          title: "Defaults Mode",
+          description: "Quick setup with sensible defaults using --all flag",
+          status: "implemented",
+        },
+        {
+          title: "Template Customization",
+          description: "Ability to modify or extend existing templates",
+          status: "in-progress",
+        },
+      ],
+    },
+  ]}
+/>
+## 🧱 Architecture & Stack
+
+<ProjectMetrics
+  title="Project Structure"
+  metrics={[
+    { label: "CLI Size", value: "<250KB", icon: "📦", progress: 25 },
+    { label: "Template Count", value: "7+", icon: "📋", progress: 70 },
+    { label: "Platform Support", value: "Cross-platform", icon: "🖥️" },
+    { label: "Install Time", value: "<5s", icon: "⏱️", progress: 95 },
+  ]}
+/>
+## 🛠️ Design Philosophy
+
+<ProjectChallengeCard
+  title="Developer Productivity Focus"
+  challenge="Eliminate the repetitive, time-consuming setup work that developers face when starting new projects, while ensuring best practices are followed."
+  solution="Created a CLI tool that automates project scaffolding with a focus on developer experience, providing both quick defaults and customization options."
+  impact="Reduced project setup time from hours to seconds, allowing developers to focus immediately on building features rather than configuration."
+  domain="Developer Tools"
+/>
+
+## 📈 Development Timeline
+
+<ProjectTimeline
+  title="Project Journey"
+  items={[
+    {
+      date: "January 2025",
+      title: "Initial Concept",
+      description: "Identified common pain points in project setup",
+      status: "completed",
+    },
+    {
+      date: "February 2025",
+      title: "Core CLI Development",
+      description: "Built basic command structure and template engine",
+      status: "completed",
+    },
+    {
+      date: "March 2025",
+      title: "Next.js Templates",
+      description: "Created templates for Next.js projects",
+      status: "completed",
+    },
+    {
+      date: "April 2025",
+      title: ".NET Templates",
+      description: "Added support for .NET project scaffolding",
+      status: "completed",
+    },
+    {
+      date: "May 2025",
+      title: "Initial Release",
+      description: "Published to npm and announced to the community",
+      status: "completed",
+    },
+    {
+      date: "June 2025",
+      title: "Expansion Phase",
+      description: "Adding more templates and customization options",
+      status: "in-progress",
+    },
+  ]}
+/>
+## 🚧 WIP + Future Roadmap
+
+<ProjectFeatureShowcase
+  title="Upcoming Features"
+  groups={[
+    {
+      title: "Template Expansion",
+      features: [
+        {
+          title: "NestJS Support",
+          description: "Templates for NestJS backend projects",
+          status: "in-progress",
+        },
+        {
+          title: "React Native",
+          description: "Mobile app project scaffolding",
+          status: "planned",
+        },
+        {
+          title: "Full-stack Templates",
+          description: "Combined frontend/backend setup in one command",
+          status: "planned",
+        },
+      ],
+    },
+    {
+      title: "Technical Enhancements",
+      features: [
+        {
+          title: "Database Options",
+          description: "Support for more database types (MongoDB, MySQL)",
+          status: "in-progress",
+        },
+        {
+          title: "Cloud Integration",
+          description: "Templates for AWS, Azure, and GCP deployment",
+          status: "planned",
+        },
+        {
+          title: "Template Engine Improvements",
+          description: "More flexible and customizable templating system",
+          status: "planned",
+        },
+      ],
+    },
+    {
+      title: "User Experience",
+      features: [
+        {
+          title: "GUI Wrapper",
+          description: "Optional graphical interface for template selection",
+          status: "planned",
+        },
+        {
+          title: "Enhanced Documentation",
+          description: "Comprehensive guides and examples",
+          status: "in-progress",
+        },
+        {
+          title: "Custom Presets",
+          description: "Save and reuse project configuration presets",
+          status: "planned",
+        },
+      ],
+    },
+  ]}
+/>
+## 🔗 Summary
+
+<ProjectChallengeCard
+  title="Impact Assessment"
+  challenge="Create a tool that significantly reduces the time and effort required to start new development projects with best practices."
+  solution="Developed CTGen as a cross-platform CLI that automates project scaffolding for both Next.js and .NET applications, offering both quick defaults and customization options."
+  impact="CTGen accelerates the start of new projects by automating the boring parts—directory setup, boilerplate, config, and CI. It's ideal for developers who want to focus on building, not setup, and ensures every project starts with a solid foundation."
+  domain="Developer Productivity"
+/>
+
+<ComponentShowcase title="Related Projects">
+  <ProjectCard title="Portfolio Next.js" slug="portfolio-nextjs" />
+  <ProjectCard title="Synapse Blockchain" slug="synapse-blockchain" />
+</ComponentShowcase>

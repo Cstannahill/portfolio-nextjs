@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export type ContentImage = {
   src: string;
@@ -28,4 +28,10 @@ export type Skill = {
   description: ReactNode;
   images?: ContentImage[];
   key?: string;
+};
+
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  orientation: "horizontal" | "vertical";
 };

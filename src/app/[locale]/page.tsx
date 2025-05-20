@@ -9,14 +9,26 @@ import {
   Tag,
   Text,
 } from "@/once-ui/components";
-import { baseURL, renderContent } from "@/app/resources";
+
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { getFeaturedProjects } from "@/lib/projects";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { ProjectCarousel } from "@/components/ProjectCarousel";
+import { normalizedRoutes } from "@/app/resources";
+import { baseURL } from "@/app/resources";
+import {
+  home,
+  about,
+  person,
+  newsletter,
+  social,
+} from "@/app/resources/content";
+import { Mailchimp } from "@/components";
+import { Posts } from "@/components/blog/Posts";
+import { Meta, Schema } from "@/once-ui/modules";
 import { Experience, Institution, Skill } from "@/types/content";
 
 export async function generateMetadata({
@@ -24,52 +36,26 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const locale = await params;
-  const t = await getTranslations();
-  const { person, about, social } = renderContent(t);
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/${locale}/about`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  const { locale } = await params;
+  if (locale !== "en") {
+    return;
+  }
+  const prefix = `/${locale}`;
+  return Meta.generate({
+    title: home.title,
+    description: home.description,
+    baseURL: `${baseURL}`, // <- locale‑aware URL root
+    path: home.path, // '/readme'
+  });
 }
 
-export default async function About({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  unstable_setRequestLocale(locale);
-  const t = getTranslations("about");
-  const { person, about, social } = renderContent(t);
+export default async function Home() {
   // Get featured projects
-  const featuredProjects = await getFeaturedProjects(locale);
+  const featuredProjects = await getFeaturedProjects();
   const structure = [
     {
-      title: about.intro.title,
-      display: about.intro.display,
+      title: home.intro.title,
+      display: home.intro.display,
       items: [],
     },
     {
@@ -78,46 +64,39 @@ export default async function About({
       items: featuredProjects.map((project) => project.title),
     },
     {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      title: home.work.title,
+      display: home.work.display,
+      items: home.work.experiences.map((experience: any) => experience.company),
     },
     {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
+      title: home.studies.title,
+      display: home.studies.display,
+      items: home.studies.institutions.map(
+        (institution: any) => institution.name
+      ),
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: home.technical.title,
+      display: home.technical.display,
+      items: home.technical.skills.map((skill: any) => skill.title),
     },
   ];
   return (
     <Flex fillWidth maxWidth="m" direction="column">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: person.name,
-            jobTitle: person.role,
-            description: about.intro.description,
-            url: `https://${baseURL}/about`,
-            image: `${baseURL}/images/${person.avatar}`,
-            sameAs: social
-              .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
-              .map((item) => item.link),
-            worksFor: {
-              "@type": "Organization",
-              name: about.work.experiences[0].company || "",
-            },
-          }),
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        path={home.path}
+        title={home.title}
+        description={home.description}
+        image={`${baseURL}/og?title=${encodeURIComponent(home.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}${home.path}`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
-      {about.tableOfContent.display && (
+      {home.tableOfContent.display && (
         <Flex
           style={{ left: "0", top: "50%", transform: "translateY(-50%)" }}
           position="fixed"
@@ -126,11 +105,11 @@ export default async function About({
           direction="column"
           hide="s"
         >
-          <TableOfContents structure={structure} about={about} />
+          <TableOfContents structure={structure} about={home} />
         </Flex>
       )}
       <Flex fillWidth mobileDirection="column" justifyContent="center">
-        {about.avatar.display && (
+        {home.avatar.display && (
           <Flex
             minWidth="160"
             paddingX="l"
@@ -147,7 +126,7 @@ export default async function About({
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
+                {person.languages.map((language: any, index: number) => (
                   <Tag key={index} size="l">
                     {language}
                   </Tag>
@@ -164,14 +143,14 @@ export default async function About({
           direction="column"
         >
           <Flex
-            id={about.intro.title}
+            id={home.intro.title}
             fillWidth
             minHeight="160"
             direction="column"
             justifyContent="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
+            {home.calendar.display && (
               <Flex
                 className={styles.blockAlign}
                 style={{
@@ -192,7 +171,7 @@ export default async function About({
                 </Flex>
                 <Flex paddingX="8">Schedule a meeting</Flex>
                 <IconButton
-                  href={about.calendar.link}
+                  href={home.calendar.link}
                   data-border="rounded"
                   variant="tertiary"
                   icon="chevronRight"
@@ -218,7 +197,7 @@ export default async function About({
                 wrap
               >
                 {social.map(
-                  (item) =>
+                  (item: any) =>
                     item.link && (
                       <Button
                         key={item.name}
@@ -233,7 +212,7 @@ export default async function About({
               </Flex>
             )}
           </Flex>
-          {about.intro.display && (
+          {home.intro.display && (
             <Flex
               direction="column"
               textVariant="body-default-l"
@@ -241,7 +220,7 @@ export default async function About({
               gap="m"
               marginBottom="xl"
             >
-              {about.intro.description}
+              {home.intro.description}
             </Flex>
           )}
           {/* Featured Projects Section with Carousel */}
@@ -259,26 +238,26 @@ export default async function About({
                 {/* Project Carousel for highlighted projects */}
                 <ProjectCarousel
                   projects={featuredProjects.slice(0, 3)}
-                  locale={locale}
+                  locale={"en"}
                 />
 
                 {/* Grid display of projects */}
-                <FeaturedProjects projects={featuredProjects} locale={locale} />
+                <FeaturedProjects projects={featuredProjects} locale={"en"} />
               </Flex>
             </>
           )}
-          {about.work.display && (
+          {home.work.display && (
             <>
               <Heading
                 as="h2"
-                id={about.work.title}
+                id={home.work.title}
                 variant="display-strong-s"
                 marginBottom="m"
               >
-                {about.work.title}
+                {home.work.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience) => (
+                {home.work.experiences.map((experience: any) => (
                   <Flex
                     key={`${experience.company}`}
                     fillWidth
@@ -323,7 +302,7 @@ export default async function About({
                     </Flex>
                     {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image) => (
+                        {experience.images.map((image: any) => (
                           <Flex
                             key={`${image.src}`}
                             border="neutral-medium"
@@ -349,18 +328,18 @@ export default async function About({
               </Flex>
             </>
           )}
-          {about.studies.display && (
+          {home.studies.display && (
             <>
               <Heading
                 as="h2"
-                id={about.studies.title}
+                id={home.studies.title}
                 variant="display-strong-s"
                 marginBottom="m"
               >
-                {about.studies.title}
+                {home.studies.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution) => (
+                {home.studies.institutions.map((institution: any) => (
                   <Flex
                     key={`${institution.name}`}
                     fillWidth
@@ -381,18 +360,18 @@ export default async function About({
               </Flex>
             </>
           )}
-          {about.technical.display && (
+          {home.technical.display && (
             <>
               <Heading
                 as="h2"
-                id={about.technical.title}
+                id={home.technical.title}
                 variant="display-strong-s"
                 marginBottom="40"
               >
-                {about.technical.title}
+                {home.technical.title}
               </Heading>
               <Flex direction="column" fillWidth gap="l">
-                {about.technical.skills.map((skill) => (
+                {home.technical.skills.map((skill: any) => (
                   <Flex
                     key={`${skill.title}`}
                     fillWidth
@@ -405,8 +384,9 @@ export default async function About({
                     </Text>
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image) => (
+                        {skill.images.map((image: any) => (
                           <Flex
+                            key={image.key ?? image.src}
                             border="neutral-medium"
                             borderStyle="solid-1"
                             radius="m"

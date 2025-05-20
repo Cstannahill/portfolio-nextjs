@@ -20,7 +20,7 @@ import { ProgressSection } from "@/components/ui/blog/ProgressSection";
 import { SummaryTable } from "@/components/ui/blog/SummaryTable";
 import { Callout } from "@/components/ui/blog/Callout";
 import { FeatureList } from "@/components/ui/blog/FeatureList";
-
+import { ImageFromMap } from "./ImageFromMap";
 // Import our custom project UI components
 import {
   ProjectTechStack,
@@ -193,6 +193,7 @@ const components = {
   ProjectFeatureShowcase,
   ProjectMetrics,
   ProjectChallengeCard,
+  ImageFromMap,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

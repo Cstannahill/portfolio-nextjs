@@ -64,13 +64,20 @@ function getMDXData(dir: string) {
   });
 }
 
-// Always returns a synchronous result
-export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
+// utils/utils.ts
+export function getPosts(locale = "en") {
+  const postsDir = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    locale, // 👈 new segment
+    "blog",
+    "posts"
+  );
+
   try {
     return getMDXData(postsDir);
-  } catch (error) {
-    console.error(`Error getting posts from ${postsDir}:`, error);
-    return []; // Return empty array on error instead of throwing
+  } catch {
+    return [];
   }
 }
