@@ -128,7 +128,7 @@ const home = {
       {
         company: "Evergreen Village - Heritage Operations",
         key: "evergreen-village",
-        timeframe: "2024 - Present",
+        timeframe: "June 2024 - March 2025",
         role: "Director of Maintenance",
         achievements: [
           {
