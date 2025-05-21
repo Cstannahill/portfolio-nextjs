@@ -97,7 +97,7 @@ const home = {
     href: "/work",
   },
   tableOfContent: {
-    display: true,
+    display: false,
     subItems: false,
   },
   avatar: {
@@ -388,7 +388,7 @@ const home = {
 };
 
 const blog = {
-  label: "Thoughts and Ideas",
+  label: "Blog",
   title: "More about me",
   description: `Read what ${person.name} has been up to recently`,
   path: "/blog",
